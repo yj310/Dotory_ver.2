@@ -7,4 +7,5 @@
     <color name="colorBasic">#000ADA</color>
     <color name="colorBasicLight">#141FFE</color>
     <color name="colorBasicDark">#0009BE</color>
+    <color name="colorClear">#FFFFFF</color>
 </resources>
