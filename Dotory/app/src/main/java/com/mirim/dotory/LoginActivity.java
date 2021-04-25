@@ -14,8 +14,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         findViewById(R.id.btn_join).setOnClickListener(onClickListener);
@@ -75,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
-        alert_ex.setTitle("예제어플 알림!");
+        alert_ex.setTitle("Dotory");
         AlertDialog alert = alert_ex.create();
         alert.show();
 
