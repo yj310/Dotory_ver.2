@@ -1,8 +1,10 @@
-package com.mirim.dotory;
+package com.mirim.dotory.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.mirim.dotory.R;
 
 public class StudentFindPasswordActivity extends AppCompatActivity {
 

@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mirim.dotory.student.StudentBoardActivity;
+import com.mirim.dotory.student.StudentFindPasswordActivity;
+import com.mirim.dotory.student.StudentJoinFirstActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -50,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void LogIn() {
 
+        Intent intent = new Intent(LoginActivity.this, StudentBoardActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

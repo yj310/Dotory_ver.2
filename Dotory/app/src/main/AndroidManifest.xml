@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StudentJoinSecondActivity"></activity>
-        <activity android:name=".StudentFindPasswordActivity" />
+        <activity android:name=".student.StudentBoardActivity"></activity>
+        <activity android:name=".student.StudentJoinSecondActivity" />
+        <activity android:name=".student.StudentFindPasswordActivity" />
         <activity android:name=".ManagerJoinActivity" />
-        <activity android:name=".StudentJoinFirstActivity" />
+        <activity android:name=".student.StudentJoinFirstActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

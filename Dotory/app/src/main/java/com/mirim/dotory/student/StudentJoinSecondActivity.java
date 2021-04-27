@@ -1,4 +1,4 @@
-package com.mirim.dotory;
+package com.mirim.dotory.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,14 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class StudentJoinFirstActivity extends AppCompatActivity {
+import com.mirim.dotory.R;
+
+public class StudentJoinSecondActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_join_first);
+        setContentView(R.layout.activity_student_join_second);
 
-        findViewById(R.id.btn_next).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_join).setOnClickListener(onClickListener);
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
 
 
@@ -24,8 +26,8 @@ public class StudentJoinFirstActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent;
             switch(view.getId()){
-                case R.id.btn_next:
-                    NextPage();
+                case R.id.btn_join:
+                    Join();
                     break;
                 case R.id.btn_back:
                     finish();
@@ -36,10 +38,7 @@ public class StudentJoinFirstActivity extends AppCompatActivity {
     };
 
 
-    public void NextPage() {
+    public void Join() {
 
-        Intent intent = new Intent(StudentJoinFirstActivity.this, StudentJoinSecondActivity.class);
-        startActivity(intent);
     }
-
 }
