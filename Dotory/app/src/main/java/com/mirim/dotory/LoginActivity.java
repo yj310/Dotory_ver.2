@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
                     LogIn();
                     break;
                 case R.id.btn_join:
-                    intent = new Intent(LoginActivity.this, StudentJoinActivity.class);
+                    intent = new Intent(LoginActivity.this, StudentJoinFirstActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btn_find_pw:
