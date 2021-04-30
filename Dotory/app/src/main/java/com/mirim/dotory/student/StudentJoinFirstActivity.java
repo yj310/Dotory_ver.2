@@ -10,6 +10,8 @@ import com.mirim.dotory.R;
 
 public class StudentJoinFirstActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

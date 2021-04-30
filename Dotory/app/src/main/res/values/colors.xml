@@ -9,4 +9,5 @@
     <color name="colorBasicDark">#0009BE</color>
     <color name="colorClear">#FFFFFF</color>
     <color name="colorFloor">#e2e2e2</color>
+    <color name="colorTitleBar">#ffffff</color>
 </resources>
