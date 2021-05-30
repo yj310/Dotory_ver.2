@@ -11,19 +11,48 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:elevation="10dp"
-        android:background="@color/colorTitleBar">
+        android:background="@color/colorTitleBar"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/text_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:layout_weight="1"
             android:textColor="@color/colorBasic"
             android:textSize="17dp"
             android:textStyle="bold"
             android:gravity="center"
             android:text="외출/외박"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btn_titlebar_goout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="@color/colorTextDefault"
+                android:textSize="15dp"
+                android:text="외출"/>
+
+            <TextView
+                android:id="@+id/btn_titlebar_stayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:textColor="@color/colorTextDefault"
+                android:textSize="15dp"
+                android:background="@drawable/titlebar_select"
+                android:text="외박"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -12,4 +12,7 @@
     <color name="colorTitleBar">#ffffff</color>
     <color name="colorPostBackground">#ffffff</color>
     <color name="colorPostReadPeople">#d2d2d2</color>
+
+    <color name="colorTextDefault">#000000</color>
+    <color name="colorTextBlur">#bbbbbb</color>
 </resources>

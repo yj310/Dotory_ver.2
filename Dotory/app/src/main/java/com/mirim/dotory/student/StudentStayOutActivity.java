@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mirim.dotory.R;
 
@@ -21,6 +22,8 @@ public class StudentStayOutActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_enter).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_titlebar_goout).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_titlebar_stayout).setOnClickListener(onClickListener);
 
 
     }
@@ -56,6 +59,18 @@ public class StudentStayOutActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(StudentStayOutActivity.this, StudentMyActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                    finish();
+                    break;
+                case R.id.btn_titlebar_goout:
+                    intent = new Intent(StudentStayOutActivity.this, StudentGoOutActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                    finish();
+                    break;
+                case R.id.btn_titlebar_stayout:
+                    intent = new Intent(StudentStayOutActivity.this, StudentStayOutActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
