@@ -125,6 +125,7 @@
                 android:hint="외출장소"/>
 
             <LinearLayout
+                android:id="@+id/btn_time_select"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="40dp"
@@ -146,12 +147,27 @@
                     android:gravity="right"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/text_select_hour"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextDefault"
                         android:textSize="30dp"
-                        android:text="8:05"/>
+                        android:text="8"/>
                     <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextDefault"
+                        android:textSize="30dp"
+                        android:text=":"/>
+                    <TextView
+                        android:id="@+id/text_select_minute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorTextDefault"
+                        android:textSize="30dp"
+                        android:text="05"/>
+                    <TextView
+                        android:id="@+id/text_select_AMPM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/colorTextDefault"
