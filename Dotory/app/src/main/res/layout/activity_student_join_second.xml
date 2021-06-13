@@ -64,7 +64,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/chatting_3"
+                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="textVisiblePassword"/>
 
 
@@ -191,7 +191,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/chatting_3"
+                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="phone"/>
 
                 <TextView
@@ -207,7 +207,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/chatting_3"
+                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="phone"/>
 
 

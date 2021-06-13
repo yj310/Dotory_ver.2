@@ -55,38 +55,38 @@
 
         <ImageView
             android:id="@+id/btn_bottombar_board"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="12dp"
             android:src="@drawable/bottombar_board" />
         <ImageView
             android:id="@+id/btn_bottombar_goout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="12dp"
             android:src="@drawable/bottombar_goout" />
         <ImageView
             android:id="@+id/btn_bottombar_enter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="12dp"
             android:src="@drawable/bottombar_enter_1" />
         <ImageView
             android:id="@+id/btn_bottombar_point"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="12dp"
             android:src="@drawable/bottombar_point" />
         <ImageView
             android:id="@+id/btn_bottombar_my"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
+            android:padding="12dp"
             android:src="@drawable/bottombar_my" />
 
 
