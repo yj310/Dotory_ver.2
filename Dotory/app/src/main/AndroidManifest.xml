@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.StudentMyActivity"></activity>
+        <activity android:name=".student.StudentMyRuleActivity"></activity>
+        <activity android:name=".student.StudentMyListActivity" />
+        <activity android:name=".student.StudentMyBookmarkActivity" />
+        <activity android:name=".student.StudentMyActivity" />
         <activity android:name=".student.StudentPointActivity" />
         <activity android:name=".student.StudentEnterActivity" />
         <activity android:name=".student.StudentStayOutActivity" />

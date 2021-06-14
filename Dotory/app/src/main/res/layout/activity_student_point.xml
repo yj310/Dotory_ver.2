@@ -119,7 +119,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:background="@drawable/point_bottom_line">
+                    android:background="@drawable/list_bottom_line">
 
                     <TextView
                         android:layout_width="50dp"
@@ -154,7 +154,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:background="@drawable/point_bottom_line">
+                    android:background="@drawable/list_bottom_line">
 
                     <TextView
                         android:layout_width="50dp"
@@ -189,7 +189,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:background="@drawable/point_bottom_line_light">
+                    android:background="@drawable/list_bottom_line_light">
 
                     <TextView
                         android:layout_width="50dp"
@@ -224,7 +224,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:background="@drawable/point_bottom_line_light">
+                    android:background="@drawable/list_bottom_line_light">
 
                     <TextView
                         android:layout_width="50dp"

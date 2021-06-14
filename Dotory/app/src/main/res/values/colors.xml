@@ -15,4 +15,5 @@
 
     <color name="colorTextDefault">#000000</color>
     <color name="colorTextBlur">#bbbbbb</color>
+    <color name="colorTextBlurLight">#d2d2d2</color>
 </resources>
