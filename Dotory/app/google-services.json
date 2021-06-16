@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "308585810378",
+    "firebase_url": "https://dotory2-default-rtdb.firebaseio.com",
+    "project_id": "dotory2",
+    "storage_bucket": "dotory2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308585810378:android:14c72f8c93bfb2acda6733",
+        "android_client_info": {
+          "package_name": "com.mirim.dotory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308585810378-h4dtt9rrf7karn6110n87060cge3mipo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsLMVPOWux5trMiI5gN840cuAWgsotseM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308585810378-h4dtt9rrf7karn6110n87060cge3mipo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308585810378:android:c8609b8829c95d49da6733",
+        "android_client_info": {
+          "package_name": "com.mirim.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308585810378-h4dtt9rrf7karn6110n87060cge3mipo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsLMVPOWux5trMiI5gN840cuAWgsotseM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308585810378-h4dtt9rrf7karn6110n87060cge3mipo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
