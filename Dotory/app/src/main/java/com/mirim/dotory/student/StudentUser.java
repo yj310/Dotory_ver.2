@@ -2,216 +2,56 @@ package com.mirim.dotory.student;
 
 public class StudentUser {
 
-    private String email;           // 학교이메일
-    private String password;        // 비밀번호
+    private String name;
+    private String room;
+    private String entrance_year;
+    private String phone;
+    private String email;
+    private String guardian_phone;
+    private String address_load;
+    private String address_detail;
+    private String grade;
+    private String school_class;
+    private String class_number;
+    private String birth_year;
+    private String birth_month;
+    private String birth_day;
 
-    private String name;            // 이름
-    private Birth birth;            // 생일정보
-    private ClassInfo classInfo;    // 학번
-    private String callNum;         // 휴대전화 번호
-    private String guardCallNum;    // 보호자 휴대전화 번호
-    private Address address;        // 주소 정보
-    private int room;               // 호실
+    public StudentUser(){}
 
-
-
-
-    // 생성자
-    public StudentUser() { }
-
-    public StudentUser(String email, String password, String name, Birth birth, ClassInfo classInfo, String callNum, String guardCallNum, Address address, int room) {
-        this.email = email;
-        this.password = password;
+    public StudentUser(String name, String room, String entrance_year, String phone, String email, String guardian_phone, String address_load, String address_detail, String grade, String school_class, String class_number, String birth_year, String birth_month, String birth_day) {
         this.name = name;
-        this.birth = birth;
-        this.classInfo = classInfo;
-        this.callNum = callNum;
-        this.guardCallNum = guardCallNum;
-        this.address = address;
         this.room = room;
-    }
-
-
-    // getter setter
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+        this.entrance_year = entrance_year;
+        this.phone = phone;
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Birth getBirth() {
-        return birth;
-    }
-
-    public void setBirth(Birth birth) {
-        this.birth = birth;
-    }
-
-    public ClassInfo getClassInfo() {
-        return classInfo;
-    }
-
-    public void setClassInfo(ClassInfo classInfo) {
-        this.classInfo = classInfo;
-    }
-
-    public String getCallNum() {
-        return callNum;
-    }
-
-    public void setCallNum(String callNum) {
-        this.callNum = callNum;
-    }
-
-    public String getGuardCallNum() {
-        return guardCallNum;
-    }
-
-    public void setGuardCallNum(String guardCallNum) {
-        this.guardCallNum = guardCallNum;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public int getRoom() {
-        return room;
-    }
-
-    public void setRoom(int room) {
-        this.room = room;
-    }
-
-}
-
-class Birth {
-    private int year;               // 생년
-    private int month;              // 생월
-    private int day;                // 생일
-
-
-
-    // 생성자
-    public Birth() { }
-
-    public Birth(int year, int month, int day) {
-        this.year = year;
-        this.month = month;
-        this.day = day;
-    }
-
-    // getter setter
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-}
-
-class ClassInfo {
-    private int grade;              // 학년
-    private int classroom;          // 반
-    private int numer;              // 번호
-
-
-
-    // 생성자
-    public ClassInfo() { }
-
-    public ClassInfo(int grade, int classroom, int numer) {
-        this.grade = grade;
-        this.classroom = classroom;
-        this.numer = numer;
-    }
-
-    // getter setter
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public int getClassroom() {
-        return classroom;
-    }
-
-    public void setClassroom(int classroom) {
-        this.classroom = classroom;
-    }
-
-    public int getNumer() {
-        return numer;
-    }
-
-    public void setNumer(int numer) {
-        this.numer = numer;
-    }
-
-}
-
-class Address {
-    private String address_load;    // 도로명주소
-    private String address_detail;  // 상세주소
-    private String address_postal;  // 우편주소
-    private String grup;            // 지방/서울/경인
-
-
-
-    // 생성자
-    public Address() { }
-
-    public Address(String address_load, String address_detail, String address_postal, String grup) {
+        this.guardian_phone = guardian_phone;
         this.address_load = address_load;
         this.address_detail = address_detail;
-        this.address_postal = address_postal;
-        this.grup = grup;
+        this.grade = grade;
+        this.school_class = school_class;
+        this.class_number = class_number;
+        this.birth_year = birth_year;
+        this.birth_month = birth_month;
+        this.birth_day = birth_day;
     }
 
-    // getter setter
+    public String getEntrance_year() {
+        return entrance_year;
+    }
+
+    public void setEntrance_year(String entrance_year) {
+        this.entrance_year = entrance_year;
+    }
+
+    public String getGuardian_phone() {
+        return guardian_phone;
+    }
+
+    public void setGuardian_phone(String guardian_phone) {
+        this.guardian_phone = guardian_phone;
+    }
+
     public String getAddress_load() {
         return address_load;
     }
@@ -228,19 +68,83 @@ class Address {
         this.address_detail = address_detail;
     }
 
-    public String getAddress_postal() {
-        return address_postal;
+    public String getBirth_year() {
+        return birth_year;
     }
 
-    public void setAddress_postal(String address_postal) {
-        this.address_postal = address_postal;
+    public void setBirth_year(String birth_year) {
+        this.birth_year = birth_year;
     }
 
-    public String getGrup() {
-        return grup;
+    public String getBirth_month() {
+        return birth_month;
     }
 
-    public void setGrup(String grup) {
-        this.grup = grup;
+    public void setBirth_month(String birth_month) {
+        this.birth_month = birth_month;
+    }
+
+    public String getBirth_day() {
+        return birth_day;
+    }
+
+    public void setBirth_day(String birth_day) {
+        this.birth_day = birth_day;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getSchool_class() {
+        return school_class;
+    }
+
+    public void setSchool_class(String school_class) {
+        this.school_class = school_class;
+    }
+
+    public String getClass_number() {
+        return class_number;
+    }
+
+    public void setClass_number(String class_number) {
+        this.class_number = class_number;
+    }
+
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

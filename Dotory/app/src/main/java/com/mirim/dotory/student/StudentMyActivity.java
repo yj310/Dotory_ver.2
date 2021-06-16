@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mirim.dotory.LoginActivity;
 import com.mirim.dotory.R;
 
 public class StudentMyActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class StudentMyActivity extends AppCompatActivity {
         findViewById(R.id.btn_my_bookmark).setOnClickListener(onClickListener);
         findViewById(R.id.btn_my_list).setOnClickListener(onClickListener);
         findViewById(R.id.btn_my_rule).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
 
 
     }
@@ -74,6 +76,10 @@ public class StudentMyActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_my_rule:
                     intent = new Intent(StudentMyActivity.this, StudentMyRuleActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.btn_logout:
+                    intent = new Intent(StudentMyActivity.this, LoginActivity.class);
                     startActivity(intent);
                     break;
 
