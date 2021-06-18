@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.StudentMyRuleActivity"></activity>
+        <activity android:name=".manager.ManagerMyActivity"></activity>
+        <activity android:name=".manager.ManagerPointStateActivity" />
+        <activity android:name=".manager.ManagerPointActivity" />
+        <activity android:name=".manager.ManagerEnterActivity" />
+        <activity android:name=".manager.ManagerStayOutActivity" />
+        <activity android:name=".manager.ManagerGoOutActivity" />
+        <activity android:name=".manager.ManagerBoardActivity" />
+        <activity android:name=".manager.ManagerLoginActivity" />
+        <activity android:name=".student.StudentMyRuleActivity" />
         <activity android:name=".student.StudentMyListActivity" />
         <activity android:name=".student.StudentMyBookmarkActivity" />
         <activity android:name=".student.StudentMyActivity" />
@@ -20,7 +28,6 @@
         <activity android:name=".student.StudentBoardActivity" />
         <activity android:name=".student.StudentJoinSecondActivity" />
         <activity android:name=".student.StudentFindPasswordActivity" />
-        <activity android:name=".ManagerJoinActivity" />
         <activity android:name=".student.StudentJoinFirstActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

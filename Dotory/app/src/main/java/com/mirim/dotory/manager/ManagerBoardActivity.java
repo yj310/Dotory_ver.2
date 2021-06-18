@@ -1,4 +1,4 @@
-package com.mirim.dotory.student;
+package com.mirim.dotory.manager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +18,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.Post;
 import com.mirim.dotory.PostCustomAdapter;
 import com.mirim.dotory.R;
+import com.mirim.dotory.student.StudentBoardActivity;
+import com.mirim.dotory.student.StudentEnterActivity;
+import com.mirim.dotory.student.StudentGoOutActivity;
+import com.mirim.dotory.student.StudentMyActivity;
+import com.mirim.dotory.student.StudentPointActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class StudentBoardActivity extends AppCompatActivity {
+public class ManagerBoardActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -34,8 +39,7 @@ public class StudentBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_board);
-
+        setContentView(R.layout.activity_manager_board);
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -71,7 +75,7 @@ public class StudentBoardActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // DB를 가져오던 중 에러 발생 시
-                Toast.makeText(StudentBoardActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerBoardActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
             }
         });
         adapter = new PostCustomAdapter(arrayList, this);
@@ -85,31 +89,31 @@ public class StudentBoardActivity extends AppCompatActivity {
             Intent intent;
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
-                    intent = new Intent(StudentBoardActivity.this, StudentBoardActivity.class);
+                    intent = new Intent(ManagerBoardActivity.this, ManagerBoardActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
-                    intent = new Intent(StudentBoardActivity.this, StudentGoOutActivity.class);
+                    intent = new Intent(ManagerBoardActivity.this, ManagerGoOutActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
-                    intent = new Intent(StudentBoardActivity.this, StudentEnterActivity.class);
+                    intent = new Intent(ManagerBoardActivity.this, ManagerEnterActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
-                    intent = new Intent(StudentBoardActivity.this, StudentPointActivity.class);
+                    intent = new Intent(ManagerBoardActivity.this, ManagerPointActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
-                    intent = new Intent(StudentBoardActivity.this, StudentMyActivity.class);
+                    intent = new Intent(ManagerBoardActivity.this, ManagerMyActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

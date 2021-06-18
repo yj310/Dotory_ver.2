@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mirim.dotory.manager.ManagerLoginActivity;
 import com.mirim.dotory.student.StudentBoardActivity;
 import com.mirim.dotory.student.StudentFindPasswordActivity;
 import com.mirim.dotory.student.StudentJoinFirstActivity;
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_join).setOnClickListener(onClickListener);
         findViewById(R.id.btn_login).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_login_manager).setOnClickListener(onClickListener);
 
 
     }
@@ -41,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
                     intent = new Intent(LoginActivity.this, StudentFindPasswordActivity.class);
                     startActivity(intent);
                     break;
-                case R.id.btn_join_manager:
-                    intent = new Intent(LoginActivity.this, ManagerJoinActivity.class);
+                case R.id.btn_login_manager:
+                    intent = new Intent(LoginActivity.this, ManagerLoginActivity.class);
                     startActivity(intent);
                     break;
 
