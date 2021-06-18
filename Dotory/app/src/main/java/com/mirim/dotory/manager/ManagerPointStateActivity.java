@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.mirim.dotory.R;
 
 public class ManagerPointStateActivity extends AppCompatActivity {
+
+    private LinearLayout groupRoomLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,10 @@ public class ManagerPointStateActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
         findViewById(R.id.btn_titlebar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_titlebar_pointstate).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_room).setOnClickListener(onClickListener);
+
+        groupRoomLinearLayout = findViewById(R.id.group_room);
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -72,6 +79,13 @@ public class ManagerPointStateActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     finish();
                     break;
+                case R.id.btn_room:
+                    if(groupRoomLinearLayout.getVisibility() == View.INVISIBLE)
+                        groupRoomLinearLayout.setVisibility(View.VISIBLE);
+                    else
+                        groupRoomLinearLayout.setVisibility(View.INVISIBLE);
+                    break;
+
 
             }
         }

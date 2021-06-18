@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:textColor="@color/colorTextDefault"
+                android:textColor="@color/colorTextBlur"
                 android:textSize="15dp"
                 android:text="외출"/>
 

@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:textColor="@color/colorTextDefault"
+                android:textColor="@color/colorTextBlur"
                 android:textSize="15dp"
                 android:text="상벌점"/>
 
@@ -71,6 +71,343 @@
             android:orientation="vertical"
             android:background="@color/colorFloor">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="30dp"
+                android:paddingBottom="50dp"
+                android:elevation="3dp"
+                android:background="@color/colorClear">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:textColor="@color/colorTextDefault"
+                    android:text="2021년"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextBlur"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:text="호실"/>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:background="@color/colorTextBlurLight"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextBlur"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:text="이름"/>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:background="@color/colorTextBlurLight"/>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextBlur"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:text="이름"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btn_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/hide_show_toggle_button">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextDefault"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:text="401호"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:layout_weight="1">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="15dp"
+                            android:gravity="right"
+                            android:src="@drawable/arrow_down"
+                            app:tint="@color/colorTextBlur" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/group_room"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="401호"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="이연지"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="-5"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="401호"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="이연지"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="-5"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="401호"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="이연지"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="-5"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="401호"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="이연지"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:textColor="@color/colorTextBlur"
+                                android:textSize="18dp"
+                                android:text="-5"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
