@@ -107,12 +107,11 @@
                             android:gravity="center"
                             android:textColor="@color/colorTextBlur"
                             android:textSize="18dp"
-                            android:textStyle="bold"
                             android:text="호실"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginVertical="10dp"
                         android:background="@color/colorTextBlurLight"/>
@@ -128,12 +127,11 @@
                             android:gravity="center"
                             android:textColor="@color/colorTextBlur"
                             android:textSize="18dp"
-                            android:textStyle="bold"
                             android:text="이름"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_width="2dp"
+                        android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginVertical="10dp"
                         android:background="@color/colorTextBlurLight"/>
@@ -149,8 +147,7 @@
                             android:gravity="center"
                             android:textColor="@color/colorTextBlur"
                             android:textSize="18dp"
-                            android:textStyle="bold"
-                            android:text="이름"/>
+                            android:text="총점"/>
 
                     </LinearLayout>
                 </LinearLayout>

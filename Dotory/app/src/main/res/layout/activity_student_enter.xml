@@ -50,7 +50,8 @@
             android:layout_height="250dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="#eeeeee">
+            android:background="@drawable/qr_frame"
+            android:backgroundTint="@color/colorTextBlur">
             <View
                 android:layout_width="180dp"
                 android:layout_height="180dp"

@@ -123,8 +123,7 @@
                     android:layout_height="match_parent"
                     android:text="n명읽음"
                     android:gravity="center"
-                    android:textColor="@color/colorPostReadPeople"
-                    android:textStyle="bold" />
+                    android:textColor="@color/colorPostReadPeople" />
 
             </LinearLayout>
         </LinearLayout>
