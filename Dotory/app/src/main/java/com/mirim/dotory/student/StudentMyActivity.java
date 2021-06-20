@@ -83,9 +83,27 @@ public class StudentMyActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.btn_logout:
-                    intent = new Intent(StudentMyActivity.this, StudentLoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    AlertDialog.Builder alert_ex = new AlertDialog.Builder(StudentMyActivity.this);
+                    alert_ex.setMessage("로그아웃하시겠습니까?");
+
+                    alert_ex.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    alert_ex.setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(StudentMyActivity.this, StudentLoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                    alert_ex.setTitle("Dotory");
+                    AlertDialog alert = alert_ex.create();
+                    alert.show();
+
                     break;
 
             }

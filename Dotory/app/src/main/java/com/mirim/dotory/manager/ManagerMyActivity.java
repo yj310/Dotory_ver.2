@@ -12,6 +12,7 @@ import com.mirim.dotory.student.StudentLoginActivity;
 import com.mirim.dotory.R;
 import com.mirim.dotory.manager.my.ManageManagerAccountActivity;
 import com.mirim.dotory.manager.my.ManageStudentAccountActivity;
+import com.mirim.dotory.student.StudentMyActivity;
 
 public class ManagerMyActivity extends AppCompatActivity {
 
@@ -70,9 +71,27 @@ public class ManagerMyActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.btn_logout:
-                    intent = new Intent(ManagerMyActivity.this, StudentLoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                    AlertDialog.Builder alert_ex = new AlertDialog.Builder(ManagerMyActivity.this);
+                    alert_ex.setMessage("로그아웃하시겠습니까?");
+
+                    alert_ex.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    alert_ex.setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(ManagerMyActivity.this, StudentLoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+                    alert_ex.setTitle("Dotory");
+                    AlertDialog alert = alert_ex.create();
+                    alert.show();
+
                     break;
                 case R.id.btn_manage_student_account:
                     intent = new Intent(ManagerMyActivity.this, ManageStudentAccountActivity.class);
