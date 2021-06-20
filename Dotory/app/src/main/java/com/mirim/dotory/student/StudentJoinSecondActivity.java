@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,11 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mirim.dotory.LoginActivity;
-import com.mirim.dotory.MainActivity;
 import com.mirim.dotory.R;
 
 public class StudentJoinSecondActivity extends AppCompatActivity {
@@ -387,7 +383,7 @@ public class StudentJoinSecondActivity extends AppCompatActivity {
         mDatabase.child("StudentUser").child(email).setValue(studentUser);
         Toast.makeText(StudentJoinSecondActivity.this, "회원가입에 성공하였습니다.", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(StudentJoinSecondActivity.this, LoginActivity.class);
+        Intent intent = new Intent(StudentJoinSecondActivity.this, StudentLoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

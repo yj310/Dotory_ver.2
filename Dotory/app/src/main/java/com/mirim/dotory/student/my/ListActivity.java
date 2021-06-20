@@ -1,4 +1,4 @@
-package com.mirim.dotory.student;
+package com.mirim.dotory.student.my;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.mirim.dotory.R;
 
-public class StudentMyRuleActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_my_rule);
+        setContentView(R.layout.activity_student_my_list);
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
     }

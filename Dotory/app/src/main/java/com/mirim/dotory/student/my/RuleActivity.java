@@ -1,4 +1,4 @@
-package com.mirim.dotory.student;
+package com.mirim.dotory.student.my;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.mirim.dotory.R;
 
-public class StudentMyBookmarkActivity extends AppCompatActivity {
+public class RuleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_my_bookmark);
+        setContentView(R.layout.activity_student_my_rule);
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
     }

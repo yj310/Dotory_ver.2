@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.mirim.dotory.LoginActivity;
 import com.mirim.dotory.R;
+import com.mirim.dotory.student.my.BookmarkActivity;
+import com.mirim.dotory.student.my.ListActivity;
+import com.mirim.dotory.student.my.RuleActivity;
 
 public class StudentMyActivity extends AppCompatActivity {
 
@@ -69,19 +71,19 @@ public class StudentMyActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.btn_my_bookmark:
-                    intent = new Intent(StudentMyActivity.this, StudentMyBookmarkActivity.class);
+                    intent = new Intent(StudentMyActivity.this, BookmarkActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btn_my_list:
-                    intent = new Intent(StudentMyActivity.this, StudentMyListActivity.class);
+                    intent = new Intent(StudentMyActivity.this, ListActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btn_my_rule:
-                    intent = new Intent(StudentMyActivity.this, StudentMyRuleActivity.class);
+                    intent = new Intent(StudentMyActivity.this, RuleActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btn_logout:
-                    intent = new Intent(StudentMyActivity.this, LoginActivity.class);
+                    intent = new Intent(StudentMyActivity.this, StudentLoginActivity.class);
                     startActivity(intent);
                     finish();
                     break;
