@@ -83,15 +83,18 @@
 
         </LinearLayout>
 
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/btn_login_manager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="11dp"
-            android:gravity="right|bottom"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="10dp"
             android:text="관리자모드"/>
     </LinearLayout>
 </LinearLayout>

@@ -60,11 +60,11 @@
                     android:layout_marginBottom="10dp"/>
 
                 <EditText
+                    android:id="@+id/input_name"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="textVisiblePassword"/>
 
 
@@ -186,12 +186,12 @@
 
 
                 <EditText
+                    android:id="@+id/input_phone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="phone"/>
 
                 <TextView
@@ -203,11 +203,11 @@
                     android:layout_marginBottom="10dp"/>
 
                 <EditText
+                    android:id="@+id/input_guardian_phone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
                     android:padding="10dp"
-                    android:drawableRight="@drawable/drawable_right_complete"
                     android:inputType="phone"/>
 
 
@@ -236,6 +236,7 @@
                     android:layout_height="40dp"
                     android:orientation="horizontal">
                     <EditText
+                        android:id="@+id/input_address_load"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -244,7 +245,7 @@
                         android:paddingHorizontal="15dp"
                         android:hint="도로명주소 입력"
                         android:textSize="15dp"
-                        android:inputType="number"/>
+                        android:inputType="text"/>
 
                     <TextView
                         android:layout_width="100dp"
@@ -259,6 +260,7 @@
 
                 </LinearLayout>
                 <EditText
+                    android:id="@+id/input_address_detail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
@@ -266,8 +268,9 @@
                     android:layout_marginTop="10dp"
                     android:hint="상세주소 입력"
                     android:textSize="15dp"
-                    android:inputType="textVisiblePassword"/>
+                    android:inputType="text"/>
                 <EditText
+                    android:id="@+id/input_address_mail"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/input_border2"
@@ -275,7 +278,7 @@
                     android:layout_marginTop="10dp"
                     android:hint="우편번호 입력"
                     android:textSize="15dp"
-                    android:inputType="textVisiblePassword"/>
+                    android:inputType="number"/>
 
 
 

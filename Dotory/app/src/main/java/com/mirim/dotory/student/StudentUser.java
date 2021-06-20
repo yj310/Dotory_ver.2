@@ -3,28 +3,26 @@ package com.mirim.dotory.student;
 public class StudentUser {
 
     private String name;
-    private String room;
-    private String entrance_year;
-    private String phone;
+    private int room;
     private String email;
+    private String phone;
     private String guardian_phone;
     private String address_load;
     private String address_detail;
-    private String grade;
-    private String school_class;
-    private String class_number;
-    private String birth_year;
-    private String birth_month;
-    private String birth_day;
+    private int grade;
+    private int school_class;
+    private int class_number;
+    private int birth_year;
+    private int birth_month;
+    private int birth_day;
 
     public StudentUser(){}
 
-    public StudentUser(String name, String room, String entrance_year, String phone, String email, String guardian_phone, String address_load, String address_detail, String grade, String school_class, String class_number, String birth_year, String birth_month, String birth_day) {
+    public StudentUser(String name, int room, String email, String phone, String guardian_phone, String address_load, String address_detail, int grade, int school_class, int class_number, int birth_year, int birth_month, int birth_day) {
         this.name = name;
         this.room = room;
-        this.entrance_year = entrance_year;
-        this.phone = phone;
         this.email = email;
+        this.phone = phone;
         this.guardian_phone = guardian_phone;
         this.address_load = address_load;
         this.address_detail = address_detail;
@@ -36,12 +34,36 @@ public class StudentUser {
         this.birth_day = birth_day;
     }
 
-    public String getEntrance_year() {
-        return entrance_year;
+    public String getName() {
+        return name;
     }
 
-    public void setEntrance_year(String entrance_year) {
-        this.entrance_year = entrance_year;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRoom() {
+        return room;
+    }
+
+    public void setRoom(int room) {
+        this.room = room;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getGuardian_phone() {
@@ -68,83 +90,51 @@ public class StudentUser {
         this.address_detail = address_detail;
     }
 
-    public String getBirth_year() {
-        return birth_year;
-    }
-
-    public void setBirth_year(String birth_year) {
-        this.birth_year = birth_year;
-    }
-
-    public String getBirth_month() {
-        return birth_month;
-    }
-
-    public void setBirth_month(String birth_month) {
-        this.birth_month = birth_month;
-    }
-
-    public String getBirth_day() {
-        return birth_day;
-    }
-
-    public void setBirth_day(String birth_day) {
-        this.birth_day = birth_day;
-    }
-
-    public String getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
-    public String getSchool_class() {
+    public int getSchool_class() {
         return school_class;
     }
 
-    public void setSchool_class(String school_class) {
+    public void setSchool_class(int school_class) {
         this.school_class = school_class;
     }
 
-    public String getClass_number() {
+    public int getClass_number() {
         return class_number;
     }
 
-    public void setClass_number(String class_number) {
+    public void setClass_number(int class_number) {
         this.class_number = class_number;
     }
 
-
-    public String getRoom() {
-        return room;
+    public int getBirth_year() {
+        return birth_year;
     }
 
-    public void setRoom(String room) {
-        this.room = room;
+    public void setBirth_year(int birth_year) {
+        this.birth_year = birth_year;
     }
 
-    public String getPhone() {
-        return phone;
+    public int getBirth_month() {
+        return birth_month;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getName() {
-        return name;
+    public void setBirth_month(int birth_month) {
+        this.birth_month = birth_month;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getBirth_day() {
+        return birth_day;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBirth_day(int birth_day) {
+        this.birth_day = birth_day;
     }
 }
