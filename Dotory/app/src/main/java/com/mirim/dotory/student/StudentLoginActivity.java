@@ -91,13 +91,8 @@ public class StudentLoginActivity extends AppCompatActivity {
                             //Toast.makeText(StudentLoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
 
                         }
-
                     }
-
-
                 });
-
-
         } else {
             Toast.makeText(StudentLoginActivity.this, "입력되지 않은 항목이 존재합니다.", Toast.LENGTH_SHORT).show();
 

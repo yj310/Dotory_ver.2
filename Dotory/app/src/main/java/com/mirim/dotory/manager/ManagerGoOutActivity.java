@@ -12,10 +12,15 @@ import com.mirim.dotory.R;
 
 public class ManagerGoOutActivity extends AppCompatActivity {
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_go_out);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -33,42 +38,49 @@ public class ManagerGoOutActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerBoardActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerGoOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerEnterActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerPointActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerMyActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_goout:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerGoOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_stayout:
                     intent = new Intent(ManagerGoOutActivity.this, ManagerStayOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

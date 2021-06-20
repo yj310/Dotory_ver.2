@@ -63,6 +63,7 @@ public class ManagerLoginActivity extends AppCompatActivity {
                         if(snapshot.getKey().equals(tv_id.getText().toString())) {
                             if(snapshot.child("password").getValue().equals(tv_password.getText().toString())) {
                                 Intent intent = new Intent(ManagerLoginActivity.this, ManagerBoardActivity.class);
+                                intent.putExtra("id", tv_id.getText().toString());
                                 ActivityCompat.finishAffinity(ManagerLoginActivity.this);
                                 startActivity(intent);
                                 finish();

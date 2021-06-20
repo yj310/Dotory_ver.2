@@ -10,10 +10,15 @@ import com.mirim.dotory.R;
 
 public class BookmarkActivity extends AppCompatActivity {
 
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_my_bookmark);
+
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
     }

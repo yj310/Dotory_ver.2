@@ -13,11 +13,15 @@ import com.mirim.dotory.R;
 
 public class StudentStayOutActivity extends AppCompatActivity {
 
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_stay_out);
 
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -37,42 +41,49 @@ public class StudentStayOutActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(StudentStayOutActivity.this, StudentBoardActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(StudentStayOutActivity.this, StudentGoOutActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(StudentStayOutActivity.this, StudentEnterActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(StudentStayOutActivity.this, StudentPointActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(StudentStayOutActivity.this, StudentMyActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_goout:
                     intent = new Intent(StudentStayOutActivity.this, StudentGoOutActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_stayout:
                     intent = new Intent(StudentStayOutActivity.this, StudentStayOutActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

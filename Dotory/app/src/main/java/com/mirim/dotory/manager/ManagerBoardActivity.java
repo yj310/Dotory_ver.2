@@ -38,10 +38,15 @@ public class ManagerBoardActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_board);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -92,30 +97,35 @@ public class ManagerBoardActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(ManagerBoardActivity.this, ManagerBoardActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(ManagerBoardActivity.this, ManagerGoOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(ManagerBoardActivity.this, ManagerEnterActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(ManagerBoardActivity.this, ManagerPointActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(ManagerBoardActivity.this, ManagerMyActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

@@ -12,11 +12,15 @@ import com.mirim.dotory.R;
 
 public class StudentPointActivity extends AppCompatActivity {
 
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_point);
 
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -34,30 +38,35 @@ public class StudentPointActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(StudentPointActivity.this, StudentBoardActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(StudentPointActivity.this, StudentGoOutActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(StudentPointActivity.this, StudentEnterActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(StudentPointActivity.this, StudentPointActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(StudentPointActivity.this, StudentMyActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

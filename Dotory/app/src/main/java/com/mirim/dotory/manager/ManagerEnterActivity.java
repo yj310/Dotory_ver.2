@@ -12,10 +12,15 @@ import com.mirim.dotory.R;
 
 public class ManagerEnterActivity extends AppCompatActivity {
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_enter);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
@@ -32,30 +37,35 @@ public class ManagerEnterActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(ManagerEnterActivity.this, ManagerBoardActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(ManagerEnterActivity.this, ManagerGoOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(ManagerEnterActivity.this, ManagerEnterActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(ManagerEnterActivity.this, ManagerPointActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(ManagerEnterActivity.this, ManagerMyActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();

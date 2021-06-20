@@ -15,10 +15,15 @@ public class ManagerPointStateActivity extends AppCompatActivity {
 
     private LinearLayout groupRoomLinearLayout;
 
+    private String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_point_state);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
@@ -41,42 +46,49 @@ public class ManagerPointStateActivity extends AppCompatActivity {
             switch(view.getId()){
                 case R.id.btn_bottombar_board:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerBoardActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_goout:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerGoOutActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_enter:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerEnterActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_point:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerPointActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_bottombar_my:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerMyActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_point:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerPointActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
                     break;
                 case R.id.btn_titlebar_pointstate:
                     intent = new Intent(ManagerPointStateActivity.this, ManagerPointStateActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
