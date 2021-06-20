@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.Post;
 import com.mirim.dotory.PostCustomAdapter;
 import com.mirim.dotory.R;
+import com.mirim.dotory.manager.post.CreatePostActivity;
 import com.mirim.dotory.student.StudentBoardActivity;
 import com.mirim.dotory.student.StudentEnterActivity;
 import com.mirim.dotory.student.StudentGoOutActivity;
@@ -54,6 +55,8 @@ public class ManagerBoardActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
 
+        findViewById(R.id.btn_create_post).setOnClickListener(onClickListener);
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -62,7 +65,7 @@ public class ManagerBoardActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        databaseReference = database.getReference("post");
+        databaseReference = database.getReference("Post");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -129,6 +132,11 @@ public class ManagerBoardActivity extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
+                    break;
+                case R.id.btn_create_post:
+                    intent = new Intent(ManagerBoardActivity.this, CreatePostActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
                     break;
 
             }

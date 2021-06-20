@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".manager.my.AddManagerAccountActivity"></activity>
+        <activity android:name=".manager.post.CreatePostActivity"></activity>
+        <activity android:name=".manager.my.AddManagerAccountActivity" />
         <activity android:name=".manager.my.ManageManagerAccountActivity" />
         <activity android:name=".manager.my.ManageStudentAccountActivity" />
         <activity android:name=".manager.ManagerMyActivity" />
