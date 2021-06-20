@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mirim.dotory.student.StudentLoginActivity;
 import com.mirim.dotory.R;
+import com.mirim.dotory.manager.my.ManageManagerAccountActivity;
+import com.mirim.dotory.manager.my.ManageStudentAccountActivity;
 
 public class ManagerMyActivity extends AppCompatActivity {
 
@@ -23,6 +26,12 @@ public class ManagerMyActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_enter).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
+
+        findViewById(R.id.btn_manage_student_account).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_manage_manager_account).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_alert_setting).setOnClickListener(onClickListener);
+
+        findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -59,6 +68,24 @@ public class ManagerMyActivity extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
+                    break;
+                case R.id.btn_logout:
+                    intent = new Intent(ManagerMyActivity.this, StudentLoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
+                case R.id.btn_manage_student_account:
+                    intent = new Intent(ManagerMyActivity.this, ManageStudentAccountActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.btn_manage_manager_account:
+                    intent = new Intent(ManagerMyActivity.this, ManageManagerAccountActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.btn_alert_setting:
+                    /*intent = new Intent(ManagerMyActivity.this, .class);
+                    startActivity(intent);
+                    finish();*/
                     break;
 
             }
