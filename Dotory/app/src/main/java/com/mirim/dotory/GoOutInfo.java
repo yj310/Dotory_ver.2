@@ -1,6 +1,8 @@
 package com.mirim.dotory;
 
-public class GoOutInfo {
+import java.io.Serializable;
+
+public class GoOutInfo implements Serializable {
 
     private String enter_time;
     private String expect_time;

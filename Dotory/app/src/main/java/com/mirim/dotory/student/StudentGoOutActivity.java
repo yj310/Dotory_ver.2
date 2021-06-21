@@ -398,6 +398,7 @@ public class StudentGoOutActivity extends AppCompatActivity {
 
                     // 리로드
                     Intent intent = getIntent();
+                    intent.putExtra("email", email);
                     finish();
                     overridePendingTransition(0, 0);
                     startActivity(intent);
