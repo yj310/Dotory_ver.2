@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="top"
-                android:hint="내용을 입력하세요\n\n\n\n\n\n\n\n\n\n\n"
+                android:hint="내용을 입력하세요\n\n\n\n\n"
                 android:padding="12dp"
                 android:text=""
                 android:textColor="#222222"

@@ -62,6 +62,7 @@ public class ModifyPostActivity extends AppCompatActivity {
             findViewById(R.id.btn_back).setOnClickListener(onClickListener);
             findViewById(R.id.btn_add_picture).setOnClickListener(onClickListener);
             findViewById(R.id.btn_modify_post).setOnClickListener(onClickListener);
+            findViewById(R.id.btn_remove_picture).setOnClickListener(onClickListener);
 
             database = FirebaseDatabase.getInstance();
             databaseReference = database.getReference("Post/" + id);
@@ -80,9 +81,24 @@ public class ModifyPostActivity extends AppCompatActivity {
                         if (activity.isFinishing())
                             return;
 
-                        Glide.with(ModifyPostActivity.this)
-                                .load(imagesRef)
-                                .into(imageView);
+                        imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                //이미지 로드 성공시
+
+                                Glide.with(ModifyPostActivity.this)
+                                        .load(uri)
+                                        .into(imageView);
+
+                                findViewById(R.id.btn_remove_picture).setVisibility(View.VISIBLE);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                //이미지 로드 실패시
+                                //Toast.makeText(ModifyPostActivity.this, imagesRef.toString() + " 로드 실패", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
 
                 }
@@ -109,6 +125,11 @@ public class ModifyPostActivity extends AppCompatActivity {
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     startActivityForResult(intent, 1);
                     break;
+                case R.id.btn_remove_picture:
+                    filePath = null;
+                    imageView.setImageBitmap(null);
+                    findViewById(R.id.btn_remove_picture).setVisibility(View.INVISIBLE);
+                    break;
                 case R.id.btn_modify_post:
                     postModify();
                     break;
@@ -134,6 +155,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                         in.close();
                         // 이미지 표시
                         imageView.setImageBitmap(img);
+                        findViewById(R.id.btn_remove_picture).setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -184,7 +206,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                 });
 
                 //storage 주소와 폴더 파일명을 지정해 준다.
-                StorageReference storageRef = storage.getReferenceFromUrl("gs://dotory-f6a74.appspot.com").child("postImages/" + filename);
+                StorageReference storageRef = storage.getReferenceFromUrl("gs://dotory2.appspot.com").child("postImages/" + filename);
                 //올라가거라...
                 storageRef.putFile(filePath)
                         //성공시
@@ -204,7 +226,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "업로드 실패", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         })
