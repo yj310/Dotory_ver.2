@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="외박 가능 시간"
+                    android:text="외출 가능 시간"
                     android:layout_marginBottom="20dp"
                     android:textColor="@color/colorTextDefault"
                     android:textSize="25dp"
@@ -95,53 +95,65 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
+
                         <TextView
+                            android:id="@+id/txt_start_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="00:00"
+                            android:textColor="@color/colorBasic"
                             android:textSize="30dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorBasic"
-                            android:text="01:00"/>
+                            android:textStyle="bold" />
+
                         <TextView
+                            android:id="@+id/txt_start_ampm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textStyle="bold"
+                            android:text="AM"
                             android:textColor="@color/colorBasic"
-                            android:text="PM"/>
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
+
                     <TextView
-                        android:layout_width="20dp"
+                        android:id="@+id/txt_start_end"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_marginHorizontal="20dp"
+                        android:gravity="center"
+                        android:text="~"
+                        android:textColor="@color/colorBasic"
                         android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorTextDefault"
-                        android:text="~"/>
+                        android:textStyle="bold" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center">
+
                         <TextView
+                            android:id="@+id/txt_end_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="00:00"
+                            android:textColor="@color/colorBasic"
                             android:textSize="30dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/colorBasic"
-                            android:text="03:00"/>
+                            android:textStyle="bold" />
+
                         <TextView
+                            android:id="@+id/txt_end_ampm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="15dp"
-                            android:textStyle="bold"
+                            android:text="AM"
                             android:textColor="@color/colorBasic"
-                            android:text="PM"/>
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -168,7 +180,7 @@
                         android:textSize="50dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorTextDefault"
-                        android:text="06:32"/>
+                        android:text="00:00"/>
                     <TextView
                         android:id="@+id/txt_now_ampm"
                         android:layout_width="wrap_content"
@@ -176,7 +188,7 @@
                         android:textSize="25dp"
                         android:textStyle="bold"
                         android:textColor="@color/colorTextDefault"
-                        android:text="PM"/>
+                        android:text="AM"/>
 
                 </LinearLayout>
 
@@ -186,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="5dp"
-                    android:text="4월 8일 목요일"/>
+                    android:text="0000년 0월 0일 일요일"/>
 
                 <TextView
                     android:id="@+id/txt_state"
@@ -195,7 +207,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="70dp"
                     android:textColor="@color/colorBasic"
-                    android:text="외출가능"/>
+                    android:text="외출 불가능"/>
                 <EditText
                     android:id="@+id/input_reason"
                     android:layout_width="match_parent"
@@ -250,7 +262,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorTextDefault"
                             android:textSize="30dp"
-                            android:text="8"/>
+                            android:text="0"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -263,7 +275,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorTextDefault"
                             android:textSize="30dp"
-                            android:text="05"/>
+                            android:text="00"/>
                         <TextView
                             android:id="@+id/text_select_AMPM"
                             android:layout_width="wrap_content"
@@ -273,7 +285,7 @@
                             android:layout_gravity="bottom"
                             android:paddingBottom="4dp"
                             android:paddingLeft="2dp"
-                            android:text="PM"/>
+                            android:text="AM"/>
                     </LinearLayout>
 
                 </LinearLayout>
