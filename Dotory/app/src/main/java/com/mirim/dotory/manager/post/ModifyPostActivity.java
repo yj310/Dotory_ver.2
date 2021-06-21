@@ -128,6 +128,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                 case R.id.btn_remove_picture:
                     filePath = null;
                     imageView.setImageBitmap(null);
+                    post.setImg_url("");
                     findViewById(R.id.btn_remove_picture).setVisibility(View.INVISIBLE);
                     break;
                 case R.id.btn_modify_post:
@@ -214,7 +215,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기=
-                                Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
                                 post.setImg_url(filename);
                                 databaseReference.setValue(post);
                                 Toast.makeText(ModifyPostActivity.this, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
@@ -243,7 +244,8 @@ public class ModifyPostActivity extends AppCompatActivity {
                         });
                 return true;
             } else {
-                Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
+                // 이미지 없애기
+               return false;
             }
         } catch(Exception e) {
             Toast.makeText(this, "uploadFile()\n" + e.toString(), Toast.LENGTH_SHORT).show();
@@ -264,8 +266,7 @@ public class ModifyPostActivity extends AppCompatActivity {
                 post.setTitle(et_title.getText().toString());
                 post.setContent(et_content.getText().toString());
 
-                if(!uploadFile())
-                {
+                if(!uploadFile()) {
                     databaseReference.setValue(post);
                     Toast.makeText(ModifyPostActivity.this, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     finish();
