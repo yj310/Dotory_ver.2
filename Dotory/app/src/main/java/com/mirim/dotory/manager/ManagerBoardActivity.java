@@ -18,14 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.Post;
-import com.mirim.dotory.PostCustomAdapter;
+import com.mirim.dotory.manager.post.ManagerPostCustomAdapter;
 import com.mirim.dotory.R;
 import com.mirim.dotory.manager.post.CreatePostActivity;
-import com.mirim.dotory.student.StudentBoardActivity;
-import com.mirim.dotory.student.StudentEnterActivity;
-import com.mirim.dotory.student.StudentGoOutActivity;
-import com.mirim.dotory.student.StudentMyActivity;
-import com.mirim.dotory.student.StudentPointActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,7 +83,7 @@ public class ManagerBoardActivity extends AppCompatActivity {
                 Toast.makeText(ManagerBoardActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        adapter = new PostCustomAdapter(arrayList, this);
+        adapter = new ManagerPostCustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
 
     }

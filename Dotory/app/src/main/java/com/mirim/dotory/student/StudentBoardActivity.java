@@ -18,7 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.Post;
-import com.mirim.dotory.PostCustomAdapter;
 import com.mirim.dotory.R;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class StudentBoardActivity extends AppCompatActivity {
                 Toast.makeText(StudentBoardActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        adapter = new PostCustomAdapter(arrayList, this);
+        adapter = new StudentPostCustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
 
     }

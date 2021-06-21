@@ -1,6 +1,7 @@
-package com.mirim.dotory;
+package com.mirim.dotory.student;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.mirim.dotory.Post;
+import com.mirim.dotory.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PostCustomAdapter extends RecyclerView.Adapter<PostCustomAdapter.PostCustomViewHolder> {
+public class StudentPostCustomAdapter extends RecyclerView.Adapter<StudentPostCustomAdapter.PostCustomViewHolder> {
     private ArrayList<Post> arrayList;
     private Context context;
 
-    public PostCustomAdapter(ArrayList<Post> arrayList, Context context) {
+    public StudentPostCustomAdapter(ArrayList<Post> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -58,9 +63,29 @@ public class PostCustomAdapter extends RecyclerView.Adapter<PostCustomAdapter.Po
         {
             FirebaseStorage fs = FirebaseStorage.getInstance();
             StorageReference imagesRef = fs.getReference().child("postImages/"+arrayList.get(position).getImg_url());
+
+            imagesRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    //이미지 로드 성공시
+
+                    Glide.with(context.getApplicationContext())
+                            .load(uri)
+                            .into(holder.iv_post_img);
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //이미지 로드 실패시
+                    //Toast.makeText(context, imagesRef.toString() + " 로드 실패", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            /*
             Glide.with(holder.itemView)
                     .load(imagesRef)
-                    .into(holder.iv_post_img);
+                    .into(holder.iv_post_img);*/
         }
     }
 
