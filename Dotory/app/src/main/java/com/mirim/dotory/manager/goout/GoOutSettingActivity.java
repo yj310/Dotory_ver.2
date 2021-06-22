@@ -67,46 +67,7 @@ public class GoOutSettingActivity extends AppCompatActivity {
         txt_start_time = findViewById(R.id.txt_start_time);
         txt_end_time = findViewById(R.id.txt_end_time);
 
-
-        database = FirebaseDatabase.getInstance();
-
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("GoOut/timeList");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // 파이어베이스의 데이터를 받아오는 곳
-                arrayList.clear();
-                String useKey = dataSnapshot.child("use").getValue().toString();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if(!(snapshot.getKey().toString().equals("use") || snapshot.getKey().toString().equals("lastkey"))) {
-                        GoOutTime goOutTime = new GoOutTime(Integer.parseInt(snapshot.getKey()), false, snapshot.child("start").getValue().toString(), snapshot.child("end").getValue().toString());
-                        if(snapshot.getKey().equals(useKey)) {
-                            goOutTime.setUse(true);
-                            txt_start_time.setText(goOutTime.getStart());
-                            txt_end_time.setText(goOutTime.getEnd());
-                        }
-                        arrayList.add(goOutTime);
-                    }
-                }
-                //Collections.reverse(arrayList);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // DB를 가져오던 중 에러 발생 시
-                Toast.makeText(GoOutSettingActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        adapter = new GoOutTimeCustomAdapter(arrayList, this, this);
-        recyclerView.setAdapter(adapter);
+        setRecyclerView();
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -233,14 +194,58 @@ public class GoOutSettingActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if(item.getTitle().equals("삭제")){
-                    /*Intent popupIntent = new Intent(GoOutSettingActivity.this, DeleteGoOutTimePopupActivity.class);
+                    Intent popupIntent = new Intent(GoOutSettingActivity.this, DeleteGoOutTimeActivity.class);
+                    overridePendingTransition(0, 0);
                     startActivity(popupIntent);
-                    finish();*/
+                    finish();
                 }
                 return false;
             }
         });
         popup.show();
+    }
+
+    private void setRecyclerView() {
+
+        database = FirebaseDatabase.getInstance();
+
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("GoOut/timeList");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어베이스의 데이터를 받아오는 곳
+                arrayList.clear();
+                String useKey = dataSnapshot.child("use").getValue().toString();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if(!(snapshot.getKey().toString().equals("use") || snapshot.getKey().toString().equals("lastkey"))) {
+                        GoOutTime goOutTime = new GoOutTime(Integer.parseInt(snapshot.getKey()), false, snapshot.child("start").getValue().toString(), snapshot.child("end").getValue().toString());
+                        if(snapshot.getKey().equals(useKey)) {
+                            goOutTime.setUse(true);
+                            txt_start_time.setText(goOutTime.getStart());
+                            txt_end_time.setText(goOutTime.getEnd());
+                        }
+                        arrayList.add(goOutTime);
+                    }
+                }
+                //Collections.reverse(arrayList);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // DB를 가져오던 중 에러 발생 시
+                Toast.makeText(GoOutSettingActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        adapter = new GoOutTimeCustomAdapter(arrayList, this, this);
+        recyclerView.setAdapter(adapter);
     }
 
     public void reloadPage() {

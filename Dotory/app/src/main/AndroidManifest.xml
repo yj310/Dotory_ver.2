@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".manager.goout.DeleteGoOutTimeActivity"></activity>
         <activity android:name=".manager.goout.GoOutSettingActivity" />
-        <activity
-            android:name=".manager.goout.AddGoOutTimePopupActivity" />
+        <activity android:name=".manager.goout.AddGoOutTimePopupActivity" />
         <activity
             android:name=".manager.goout.GoOutInfoPopupActivity"
             android:theme="@android:style/Theme.Dialog" />
