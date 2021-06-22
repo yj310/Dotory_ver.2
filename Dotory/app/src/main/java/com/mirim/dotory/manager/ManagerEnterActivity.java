@@ -7,12 +7,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+import com.mirim.dotory.MainActivity;
 import com.mirim.dotory.R;
+import com.mirim.dotory.manager.enter.EnterSettingActivity;
+import com.mirim.dotory.manager.goout.GoOutSettingActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ManagerEnterActivity extends AppCompatActivity {
 
     private String id;
+    private IntentIntegrator qrScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,8 @@ public class ManagerEnterActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_enter).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_setting).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_scan).setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -70,10 +82,44 @@ public class ManagerEnterActivity extends AppCompatActivity {
                     overridePendingTransition(0, 0);
                     finish();
                     break;
+                case R.id.btn_setting:
+                    intent = new Intent(ManagerEnterActivity.this, EnterSettingActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.btn_scan:
+                    createQRScanner();
+                    break;
 
             }
         }
     };
+
+    private void createQRScanner() {
+
+        qrScan = new IntentIntegrator(this);
+        qrScan.setOrientationLocked(false);
+        qrScan.setCameraId(0);
+        qrScan.setPrompt("Scanning...");
+        qrScan.initiateScan();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            //qrcode 가 없으면
+            if (result.getContents() == null) {
+                Toast.makeText(ManagerEnterActivity.this, "스캔취소", Toast.LENGTH_SHORT).show();
+            } else {
+                //qrcode 결과가 있으면
+                Toast.makeText(ManagerEnterActivity.this, "스캔완료", Toast.LENGTH_SHORT).show();
+                // result.getContents()
+            }
+
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
     @Override
     public void onBackPressed() {

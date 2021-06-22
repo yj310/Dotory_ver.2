@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mirim.dotory">
 
     <application
@@ -9,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".manager.goout.DeleteGoOutTimeActivity"></activity>
+        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"/>
+        <activity android:name=".manager.enter.EnterSettingActivity"></activity>
+        <activity android:name=".manager.goout.DeleteGoOutTimeActivity" />
         <activity android:name=".manager.goout.GoOutSettingActivity" />
         <activity android:name=".manager.goout.AddGoOutTimePopupActivity" />
         <activity
