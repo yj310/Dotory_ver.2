@@ -15,6 +15,7 @@ import com.mirim.dotory.R;
 
 public class GoOutInfoPopupActivity extends Activity {
 
+    private TextView txt_student_info;
     private TextView txt_state;
     private TextView txt_place;
     private TextView txt_reason;
@@ -31,6 +32,7 @@ public class GoOutInfoPopupActivity extends Activity {
         Intent intent = getIntent();
         GoOutInfo goOutInfo = (GoOutInfo) intent.getSerializableExtra("goOutInfo");
 
+        txt_student_info = findViewById(R.id.txt_student_info);
         txt_state = findViewById(R.id.txt_state);
         txt_place = findViewById(R.id.txt_place);
         txt_reason = findViewById(R.id.txt_reason);
@@ -38,6 +40,7 @@ public class GoOutInfoPopupActivity extends Activity {
         txt_expect_time = findViewById(R.id.txt_expect_time);
         txt_enter_time = findViewById(R.id.txt_enter_time);
 
+        txt_student_info.setText(goOutInfo.getRoom() + "호 " + goOutInfo.getName());
         txt_state.setText(goOutInfo.getState());
         txt_place.setText(goOutInfo.getPlace());
         txt_reason.setText(goOutInfo.getReason());

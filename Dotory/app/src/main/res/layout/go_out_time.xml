@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        android:paddingVertical="18dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/button_go_out">
+        <TextView
+            android:id="@+id/txt_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/colorTextBlur"
+            android:text="00:00"/>
+        <TextView
+            android:id="@+id/txt_tilde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorTextBlur"
+            android:text="~"/>
+        <TextView
+            android:id="@+id/txt_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@color/colorTextBlur"
+            android:text="00:00"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+        <Switch
+            android:id="@+id/btn_switch"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
+

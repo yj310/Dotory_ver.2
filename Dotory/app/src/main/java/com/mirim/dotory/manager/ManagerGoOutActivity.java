@@ -24,6 +24,7 @@ import com.mirim.dotory.GoOutInfo;
 import com.mirim.dotory.Post;
 import com.mirim.dotory.R;
 import com.mirim.dotory.manager.goout.GoOutInfoCustomAdapter;
+import com.mirim.dotory.manager.goout.GoOutSettingActivity;
 import com.mirim.dotory.student.StudentBoardActivity;
 import com.mirim.dotory.student.StudentGoOutActivity;
 import com.mirim.dotory.student.StudentPostCustomAdapter;
@@ -178,9 +179,8 @@ public class ManagerGoOutActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.btn_setting:
-                    /*intent = new Intent(ManagerGoOutActivity.this, ManagerStayOutActivity.class);
+                    intent = new Intent(ManagerGoOutActivity.this, GoOutSettingActivity.class);
                     startActivity(intent);
-                    finish();*/
                     break;
 
 
@@ -188,6 +188,7 @@ public class ManagerGoOutActivity extends AppCompatActivity {
             }
         }
     };
+
 
 
     private void loadGoOutInfo() {
