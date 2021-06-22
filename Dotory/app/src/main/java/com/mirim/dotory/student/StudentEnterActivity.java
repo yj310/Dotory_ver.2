@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -21,6 +23,8 @@ public class StudentEnterActivity extends AppCompatActivity {
 
     private String email;
     private ImageView iv_qr;
+
+    private EditText input_temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +39,16 @@ public class StudentEnterActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_enter).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_point).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_submit).setOnClickListener(onClickListener);
 
-
+        input_temp = findViewById(R.id.input_temp);
 
         iv_qr = findViewById(R.id.img_qr);
 
-        createQRcode();
     }
 
-    public void createQRcode() {
-        String text = email;
+    public void createQRcode(double temp) {
+        String text = email + "," + temp;
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
@@ -97,6 +101,15 @@ public class StudentEnterActivity extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                     finish();
+                    break;
+                case R.id.btn_submit:
+                    if(input_temp.getText().toString().equals("")){
+                        Toast.makeText(StudentEnterActivity.this, "체온을 입력해주시기 바랍니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        double temp = Double.parseDouble(input_temp.getText().toString());
+                        createQRcode(temp);
+                    }
+
                     break;
 
             }

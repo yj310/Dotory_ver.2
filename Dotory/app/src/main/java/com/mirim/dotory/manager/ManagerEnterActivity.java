@@ -112,7 +112,7 @@ public class ManagerEnterActivity extends AppCompatActivity {
                 Toast.makeText(ManagerEnterActivity.this, "스캔취소", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
-                Toast.makeText(ManagerEnterActivity.this, "스캔완료", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerEnterActivity.this, "스캔완료"+result.getContents(), Toast.LENGTH_SHORT).show();
                 // result.getContents()
             }
 
