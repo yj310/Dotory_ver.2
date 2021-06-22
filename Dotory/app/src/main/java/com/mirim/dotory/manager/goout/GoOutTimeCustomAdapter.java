@@ -35,7 +35,9 @@ import com.mirim.dotory.R;
 import com.mirim.dotory.manager.ManagerGoOutActivity;
 import com.mirim.dotory.manager.post.ModifyPostActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustomAdapter.PostCustomViewHolder> {
 
@@ -114,6 +116,35 @@ public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustom
                         database = FirebaseDatabase.getInstance();
                         databaseReference = database.getReference("GoOut/timeList/use");
                         databaseReference.setValue(goOutTime.getKey());
+                        databaseReference = database.getReference("GoOut");
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                Date now;
+                                now = new Date();
+                                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                                String today = formatter.format(now);
+                                String use = String.valueOf(goOutTime.getKey());
+
+                                databaseReference = database.getReference("GoOut");
+
+                                String start_time = dataSnapshot.child("timeList").child(use).child("start").getValue().toString();
+                                String end_time = dataSnapshot.child("timeList").child(use).child("end").getValue().toString();
+
+                                databaseReference.child(today).child("time").child("start").setValue(start_time);
+                                databaseReference.child(today).child("time").child("end").setValue(end_time);
+
+
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(context, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
 
                         // 페이지 리로드..
                         activity.reloadPage();

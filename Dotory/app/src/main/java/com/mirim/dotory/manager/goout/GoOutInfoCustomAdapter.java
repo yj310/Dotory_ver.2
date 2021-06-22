@@ -70,7 +70,7 @@ public class GoOutInfoCustomAdapter extends RecyclerView.Adapter<GoOutInfoCustom
         holder.txt_room.setText(String.valueOf(goOutInfo.getRoom()));
         holder.txt_name.setText(goOutInfo.getName());
         holder.txt_state.setText(goOutInfo.getState());
-        if(goOutInfo.getState().equals("외출중")) {
+        if(goOutInfo.getState().equals("외출중") || goOutInfo.getState().equals("외출중(지각)")) {
             int basicColor = ContextCompat.getColor(context, R.color.colorBasic);
             holder.txt_room.setTextColor(basicColor);
             holder.txt_name.setTextColor(basicColor);

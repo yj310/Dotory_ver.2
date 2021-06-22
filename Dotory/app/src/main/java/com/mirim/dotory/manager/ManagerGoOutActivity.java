@@ -90,37 +90,7 @@ public class ManagerGoOutActivity extends AppCompatActivity {
         today = formatter.format(now);
 
         loadGoOutInfo();
-
-
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("GoOut/" + today + "/student");
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // 파이어베이스의 데이터를 받아오는 곳
-                arrayList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    GoOutInfo goOutInfo = snapshot.getValue(GoOutInfo.class);
-                    arrayList.add(goOutInfo);
-                }
-                //Collections.reverse(arrayList);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // DB를 가져오던 중 에러 발생 시
-                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        adapter = new GoOutInfoCustomAdapter(arrayList, this);
-        recyclerView.setAdapter(adapter);
+        setRecyclerView();
 
     }
 
@@ -189,7 +159,157 @@ public class ManagerGoOutActivity extends AppCompatActivity {
         }
     };
 
+    private void loadGoOutTime() {
 
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference_attendanceGoOut = database.getReference("GoOut");
+        DatabaseReference databaseReference_studentGoOut = database.getReference("GoOut");
+        DatabaseReference databaseReference_GoOutState = database.getReference("GoOut");
+
+        DatabaseReference databaseReference = database.getReference("GoOut");
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어베이스의 데이터를 받아오는 곳
+
+                if(!(dataSnapshot.child(today).child("time").child("start").getValue() == null)) {
+                    // 외출 가능 시간 설정 있음
+                    txt_start_time.setText(dataSnapshot.child(today).child("time").child("start").getValue().toString());
+                    txt_end_time.setText(dataSnapshot.child(today).child("time").child("end").getValue().toString());
+                } else {
+                    // 외출 가능 시간 설정 없음
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // DB를 가져오던 중 에러 발생 시
+                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+/*
+        // 외출 정보 불러오기
+        databaseReference_attendanceGoOut.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String date = dataSnapshot.child("date").getValue().toString();
+
+                if(!date.equals(today))
+                {
+                    databaseReference_attendanceGoOut.child("date").setValue(today);
+                    databaseReference_attendanceGoOut.child("time").child("first").setValue("00:00");
+                    databaseReference_attendanceGoOut.child("time").child("second").setValue("00:00");
+                    first_time = "00:00";
+                    second_time = "00:00";
+                    first_time_hour.setText("00");
+                    first_time_minute.setText("00");
+                    second_time_hour.setText("00");
+                    second_time_minute.setText("00");
+
+                    databaseReference_GoOutState.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            databaseReference_GoOutState.setValue("before");
+                        };
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // DB를 가져오던 중 에러 발생 시
+                            Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else
+                {
+                    first_time = dataSnapshot.child("time").child("first").getValue().toString();
+                    second_time = dataSnapshot.child("time").child("second").getValue().toString();
+                    first_time_hour.setText(first_time.split(":")[0]);
+                    first_time_minute.setText(first_time.split(":")[1]);
+                    second_time_hour.setText(second_time.split(":")[0]);
+                    second_time_minute.setText(second_time.split(":")[1]);
+                }
+
+                if(!(first_time.equals("00:00")&&second_time.equals("00:00")))
+                {
+                    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+                    String now_time = formatter.format(now);
+
+                    // 현재 시간이 외출 시간에 포함이 된다면
+                    if((Integer.parseInt(first_time.split(":")[0]) < Integer.parseInt(now_time.split(":")[0])
+                            || (Integer.parseInt(first_time.split(":")[0]) == Integer.parseInt(now_time.split(":")[0])
+                            && Integer.parseInt(first_time.split(":")[1]) <= Integer.parseInt(now_time.split(":")[1])))
+
+                            && (Integer.parseInt(second_time.split(":")[0]) > Integer.parseInt(now_time.split(":")[0])
+                            || (Integer.parseInt(second_time.split(":")[0]) == Integer.parseInt(now_time.split(":")[0])
+                            && Integer.parseInt(second_time.split(":")[1]) >= Integer.parseInt(now_time.split(":")[1])))) {
+
+                        databaseReference_GoOutState.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.getValue().toString().equals("before")) {
+                                    databaseReference_GoOutState.setValue("ing");
+                                }
+                            };
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                    // 외출 가능 시간이 지났다면
+                    else if(Integer.parseInt(second_time.split(":")[0]) < Integer.parseInt(now_time.split(":")[0])
+                            || (Integer.parseInt(second_time.split(":")[0]) == Integer.parseInt(now_time.split(":")[0])
+                            && Integer.parseInt(second_time.split(":")[1]) < Integer.parseInt(now_time.split(":")[1])))
+                    {
+                        databaseReference_GoOutState.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(!dataSnapshot.getValue().toString().equals("after")) {
+                                    databaseReference_GoOutState.setValue("after");
+                                }
+                            };
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        databaseReference_studentGoOut.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    studentGoOutState = snapshot.getValue(StudentGoOutState.class);
+                                    if(studentGoOutState.getState().equals("외출중"))
+                                    {
+                                        studentGoOutState.setState("외출중(지각)");
+                                    }
+                                    databaseReference_studentGoOut.child(snapshot.getKey()).setValue(studentGoOutState);
+
+                                }
+                            };
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // DB를 가져오던 중 에러 발생 시
+                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });*/
+    }
 
     private void loadGoOutInfo() {
 
@@ -200,13 +320,58 @@ public class ManagerGoOutActivity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(!(dataSnapshot.child(today).child("time").child("start").getValue() == null)) {
+                if(dataSnapshot.child(today).child("time").child("start").getValue() != null) {
                     // 외출 가능 시간 설정 있음
                     txt_start_time.setText(dataSnapshot.child(today).child("time").child("start").getValue().toString());
                     txt_end_time.setText(dataSnapshot.child(today).child("time").child("end").getValue().toString());
+
+                    Date now = new Date();
+                    SimpleDateFormat formatter;
+                    formatter = new SimpleDateFormat("HH");
+                    int now_hour = Integer.parseInt(formatter.format(now));
+                    formatter = new SimpleDateFormat("mm");
+                    int now_minute = Integer.parseInt(formatter.format(now));
+
+                    int end_hour = Integer.parseInt(dataSnapshot.child(today).child("time").child("end").getValue().toString().split(":")[0]);
+                    int end_minute = Integer.parseInt(dataSnapshot.child(today).child("time").child("end").getValue().toString().split(":")[1]);
+
+                    if((now_hour > end_hour) || ((now_hour == end_hour) && (now_minute > end_minute))) {
+                        // 외출시간 초과
+                        DatabaseReference databaseReference = database.getReference("GoOut/" + today + "/student");
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                // 파이어베이스의 데이터를 받아오는 곳
+                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                    GoOutInfo goOutInfo = snapshot.getValue(GoOutInfo.class);
+                                    if(goOutInfo.getState().equals("외출중")) {
+                                        databaseReference.child(snapshot.getKey()).child("state").setValue("외출중(지각)");
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+
+
                 } else {
                     // 외출 가능 시간 설정 없음
+                    String use = dataSnapshot.child("timeList").child("use").getValue().toString();
+                    if(!use.equals("0")) {
+                        // 외출 시간 예약 있음
+                        String start_time = dataSnapshot.child("timeList").child(use).child("start").getValue().toString();
+                        String end_time = dataSnapshot.child("timeList").child(use).child("end").getValue().toString();
+
+                        DatabaseReference databaseReference = database.getReference("GoOut");
+                        databaseReference.child(today).child("time").child("start").setValue(start_time);
+                        databaseReference.child(today).child("time").child("end").setValue(end_time);
+
+                    }
                 }
 
             }
@@ -219,6 +384,37 @@ public class ManagerGoOutActivity extends AppCompatActivity {
 
     }
 
+    private void setRecyclerView() {
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("GoOut/" + today + "/student");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어베이스의 데이터를 받아오는 곳
+                arrayList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    GoOutInfo goOutInfo = snapshot.getValue(GoOutInfo.class);
+                    arrayList.add(goOutInfo);
+                }
+                //Collections.reverse(arrayList);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // DB를 가져오던 중 에러 발생 시
+                Toast.makeText(ManagerGoOutActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        adapter = new GoOutInfoCustomAdapter(arrayList, this);
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public void onBackPressed() {
