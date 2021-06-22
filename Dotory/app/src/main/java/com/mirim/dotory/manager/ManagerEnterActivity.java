@@ -2,15 +2,19 @@ package com.mirim.dotory.manager;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.mirim.dotory.GoOutInfo;
 import com.mirim.dotory.MainActivity;
 import com.mirim.dotory.R;
 import com.mirim.dotory.manager.enter.EnterSettingActivity;
@@ -19,10 +23,26 @@ import com.mirim.dotory.manager.goout.GoOutSettingActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ManagerEnterActivity extends AppCompatActivity {
 
-    private String id;
+    private FirebaseDatabase database;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<GoOutInfo> arrayList;
+    
     private IntentIntegrator qrScan;
+
+    private TextView txt_today;
+    private TextView txt_week;
+    private TextView txt_start_time;
+    private TextView txt_end_time;
+
+    private String id;
+    private String today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
