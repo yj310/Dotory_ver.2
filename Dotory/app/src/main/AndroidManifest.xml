@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".manager.goout.GoOutSettingActivity" />
         <activity
-            android:name=".manager.goout.AddGoOutTimePopupActivity"
-            android:theme="@android:style/Theme.Dialog" />
+            android:name=".manager.goout.AddGoOutTimePopupActivity" />
         <activity
             android:name=".manager.goout.GoOutInfoPopupActivity"
             android:theme="@android:style/Theme.Dialog" />

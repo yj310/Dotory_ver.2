@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#eeeeee"
+    android:background="#ffffff"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="wrap_content">
@@ -9,198 +9,67 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff">
+        android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txt_student_info"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_set_start"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="000호 000"
-            android:textColor="@color/colorTextBlurDark"
-            android:textSize="20dp"
-            android:gravity="left"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp" />
+            android:layout_weight="1"
+            android:paddingVertical="20dp"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:textColor="@color/colorBasic"
+            android:text="시작시간"/>
+        <TextView
+            android:id="@+id/btn_set_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="20dp"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:textColor="@color/colorTextBlur"
+            android:text="종료시간"/>
     </LinearLayout>
-    <!-- //end 타이틀바 -->
-    <!-- Notice -->
-    <LinearLayout
-        android:padding="24dp"
-        android:orientation="vertical"
+
+    <TimePicker
+        android:id="@+id/time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
+        android:timePickerMode="spinner"/>
 
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="상태" />
-
-            <TextView
-                android:id="@+id/txt_state"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="외출 장소" />
-
-            <TextView
-                android:id="@+id/txt_place"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="외출 사유" />
-
-            <TextView
-                android:id="@+id/txt_reason"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="외출 시간" />
-
-            <TextView
-                android:id="@+id/txt_go_out_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="예상 입소 시간" />
-
-            <TextView
-                android:id="@+id/txt_expect_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="입소시간" />
-
-            <TextView
-                android:id="@+id/txt_enter_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-    </LinearLayout>
-    <!-- Notice -->
-
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextBlurLight"/>
     <!-- 닫기 버튼 -->
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="right"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff">
+        android:layout_height="53dp">
         <Button
-            android:layout_width="80dp"
-            android:layout_height="53dp"
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="취소"
+            android:textSize="15sp"
+            android:textColor="@color/colorBasic"
+            android:padding="16dp"
+            android:gravity="center"
+            android:background="#0fff"/>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="확인"
             android:textSize="15sp"
             android:textColor="@color/colorBasic"
             android:padding="16dp"
             android:gravity="center"
-            android:background="#00000000"
-            android:onClick="mOnClose"/>
+            android:background="#0fff"/>
     </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>
