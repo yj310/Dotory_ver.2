@@ -251,8 +251,6 @@ public class StudentGoOutActivity extends AppCompatActivity {
                     txt_end_time.setText(getTime(endTime)[0]);
                     txt_end_ampm.setText(getTime(endTime)[1]);
 
-
-
                     DatabaseReference databaseReference = database.getReference("StudentUser");
                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -377,8 +375,6 @@ public class StudentGoOutActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void addGoOutInfo() {
         if(txt_state.getText().equals("외출 가능")) {

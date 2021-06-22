@@ -62,8 +62,6 @@ public class DeleteGoOutTimeActivity extends AppCompatActivity {
     };
 
     private void setRecyclerView() {
-        database = FirebaseDatabase.getInstance();
-
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);

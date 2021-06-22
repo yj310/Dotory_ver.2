@@ -5,14 +5,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 import com.mirim.dotory.R;
 
 public class StudentEnterActivity extends AppCompatActivity {
 
     private String email;
+    private ImageView iv_qr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +37,26 @@ public class StudentEnterActivity extends AppCompatActivity {
         findViewById(R.id.btn_bottombar_my).setOnClickListener(onClickListener);
 
 
+
+        iv_qr = findViewById(R.id.img_qr);
+
+        createQRcode();
     }
+
+    public void createQRcode() {
+        String text = email;
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            iv_qr.setImageBitmap(bitmap);
+        } catch (Exception e) {
+
+        }
+    }
+
+
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
