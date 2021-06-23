@@ -22,6 +22,7 @@ public class StudentMyInfoActivity extends AppCompatActivity {
 
     private String email;
     private TextView txt_name;
+    private TextView txt_room;
     private TextView txt_email;
     private TextView txt_phone;
     private TextView txt_guardian;
@@ -38,6 +39,7 @@ public class StudentMyInfoActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
 
         txt_name = findViewById(R.id.txt_name);
+        txt_room = findViewById(R.id.txt_room);
         txt_email = findViewById(R.id.txt_email);
         txt_phone = findViewById(R.id.txt_phone);
         txt_guardian = findViewById(R.id.txt_guardian);
@@ -81,6 +83,7 @@ public class StudentMyInfoActivity extends AppCompatActivity {
                     if(studentUser.getEmail().equals(email)) {
 
                         txt_name.setText(studentUser.getName());
+                        txt_room.setText(studentUser.getRoom() + "호");
                         txt_email.setText(studentUser.getEmail());
                         txt_phone.setText(studentUser.getPhone());
                         txt_guardian.setText(studentUser.getGuardian_phone());
