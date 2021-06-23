@@ -57,17 +57,19 @@ public class EnterInfoCustomAdapter extends RecyclerView.Adapter<EnterInfoCustom
             holder.txt_temp.setText(String.valueOf(enterInfo.getTemp()));
         }
         holder.txt_state.setText(enterInfo.getState());
-        if(enterInfo.getState().equals("외출중") || enterInfo.getState().equals("외출중(지각)")) {
+        if(enterInfo.getState().equals("입소중") || enterInfo.getState().equals("입소중(지각)")) {
             int basicColor = ContextCompat.getColor(context, R.color.colorBasic);
             holder.txt_room.setTextColor(basicColor);
             holder.txt_name.setTextColor(basicColor);
+            holder.txt_temp.setTextColor(basicColor);
             holder.txt_state.setTextColor(basicColor);
         }
         if(enterInfo.getState().equals("입소불가")) {
-            int basicColor = ContextCompat.getColor(context, R.color.colorWarning);
-            holder.txt_room.setTextColor(basicColor);
-            holder.txt_name.setTextColor(basicColor);
-            holder.txt_state.setTextColor(basicColor);
+            int warningColor = ContextCompat.getColor(context, R.color.colorWarning);
+            holder.txt_room.setTextColor(warningColor);
+            holder.txt_name.setTextColor(warningColor);
+            holder.txt_temp.setTextColor(warningColor);
+            holder.txt_state.setTextColor(warningColor);
             holder.iv_warning.setVisibility(View.VISIBLE);
         }
 

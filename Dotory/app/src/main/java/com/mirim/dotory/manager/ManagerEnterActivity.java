@@ -3,13 +3,16 @@ package com.mirim.dotory.manager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -162,7 +165,76 @@ public class ManagerEnterActivity extends AppCompatActivity {
                     // 외출 가능 시간 설정 있음
                     txt_start_time.setText(dataSnapshot.child(today).child("time").child("start").getValue().toString());
                     txt_end_time.setText(dataSnapshot.child(today).child("time").child("end").getValue().toString());
+                    if(dataSnapshot.child(today).child("state").getValue().toString().equals("before")) {
 
+                        String start_time = dataSnapshot.child(today).child("time").child("start").getValue().toString();
+                        String end_time = dataSnapshot.child(today).child("time").child("end").getValue().toString();
+
+                        int start_hour = Integer.parseInt(start_time.split(":")[0]);
+                        int start_minute = Integer.parseInt(start_time.split(":")[1]);
+                        int end_hour = Integer.parseInt(end_time.split(":")[0]);
+                        int end_minute = Integer.parseInt(end_time.split(":")[1]);
+                        int now_hour;
+                        int now_minute;
+
+                        Date now = new Date();
+                        SimpleDateFormat formatter;
+                        formatter = new SimpleDateFormat("HH");
+                        now_hour = Integer.parseInt(formatter.format(now));
+                        formatter = new SimpleDateFormat("mm");
+                        now_minute = Integer.parseInt(formatter.format(now));
+
+
+                        // 현재 시간이 입소 시간 범위 내
+                        if((start_hour < now_hour || ((start_hour == now_hour) && (start_minute <= now_minute)))
+                                && (end_hour > now_hour || ((end_hour == now_hour) && (end_minute >= now_minute)))) {
+                            DatabaseReference databaseReference_student = database.getReference("Enter/" + today + "/student");
+                            databaseReference_student.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    // 파이어베이스의 데이터를 받아오는 곳
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
+                                        if(enterInfo.getState().equals("입소전")) {
+                                            databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소중");
+                                        }
+                                    }
+                                    databaseReference.child(today).child("state").setValue("ing");
+                                    reloadPage();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    // DB를 가져오던 중 에러 발생 시
+                                    Toast.makeText(ManagerEnterActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else if((now_hour > end_hour) || ((now_hour == end_hour) && (now_minute > end_minute))) {
+                            // 입소 종료
+                            DatabaseReference databaseReference_student = database.getReference("Enter/" + today + "/student");
+                            databaseReference_student.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    // 파이어베이스의 데이터를 받아오는 곳
+                                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                        EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
+                                        if(enterInfo.getState().equals("입소중")) {
+                                            databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소중(지각)");
+                                        }
+                                    }
+                                    databaseReference.child(today).child("state").setValue("after");
+                                    reloadPage();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    // DB를 가져오던 중 에러 발생 시
+                                    Toast.makeText(ManagerEnterActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                    }
                     // state가 before?
                     // 현재시간이 입소시간?
                     // 학생 state->입소중
@@ -304,8 +376,89 @@ public class ManagerEnterActivity extends AppCompatActivity {
                 Toast.makeText(ManagerEnterActivity.this, "스캔취소", Toast.LENGTH_SHORT).show();
             } else {
                 //qrcode 결과가 있으면
-                Toast.makeText(ManagerEnterActivity.this, "스캔완료"+result.getContents(), Toast.LENGTH_SHORT).show();
-                // result.getContents()
+                String sResult = result.getContents();
+                String email = sResult.split(",")[0];
+                double temp = Double.parseDouble(sResult.split(",")[1]);
+
+                DatabaseReference databaseReference = database.getReference("Enter");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // 파이어베이스의 데이터를 받아오는 곳
+                        for (DataSnapshot snapshot : dataSnapshot.child(today).child("student").getChildren()) {
+                            EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
+                            if(enterInfo.getEmail().equals(email)) {
+                                if(temp >= 37.5) {
+                                    Toast.makeText(ManagerEnterActivity.this, temp+"", Toast.LENGTH_SHORT).show();
+                                    // 발열
+                                    enterInfo.setState("입소불가");
+                                    databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소불가");
+                                }
+                                else if(enterInfo.getState().equals("입소중")) {
+                                    // 정상 입소
+                                    enterInfo.setState("입소완료");
+                                    databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소완료");
+                                } else if(enterInfo.getState().equals("입소완료")) {
+                                    // 지각
+                                    enterInfo.setState("입소완료(지각)");
+                                    databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소완료(지각)");
+                                } else {
+                                    Toast.makeText(ManagerEnterActivity.this, "입소중이 아닙니다.", Toast.LENGTH_SHORT).show();
+                                    break;
+                                }
+
+                                databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("temp").setValue(temp);
+                                enterInfo.setTemp(temp);
+
+                                Date now = new Date();
+                                SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
+                                databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("enter_time").setValue(formatter.format(now));
+                                enterInfo.setEnter_time(formatter.format(now));
+
+                                Dialog dialog = new Dialog(ManagerEnterActivity.this);
+                                dialog.setContentView(R.layout.activity_enter_info_popup);
+                                dialog.setTitle("enter info");
+
+                                TextView txt_student_info = dialog.findViewById(R.id.txt_student_info);
+                                TextView txt_state = dialog.findViewById(R.id.txt_state);
+                                TextView txt_enter_time = dialog.findViewById(R.id.txt_enter_time);
+                                TextView txt_temp = dialog.findViewById(R.id.txt_temp);
+                                Button btn_submit = dialog.findViewById(R.id.btn_submit);
+
+                                txt_student_info.setText(enterInfo.getRoom() + "호 " + enterInfo.getName());
+                                txt_state.setText(enterInfo.getState());
+                                if(enterInfo.getState().equals("입소불가")) {
+                                    int warningColor = ContextCompat.getColor(ManagerEnterActivity.this, R.color.colorWarning);
+                                    txt_state.setTextColor(warningColor);
+                                }
+                                if(enterInfo.getTemp() == 0.0) {
+                                    txt_temp.setText("-");
+                                } else {
+                                    txt_temp.setText(String.valueOf(enterInfo.getTemp()));
+                                }
+                                txt_enter_time.setText(enterInfo.getEnter_time());
+
+                                btn_submit.setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        dialog.cancel();
+                                        reloadPage();
+                                    }
+                                });
+
+                                dialog.show();
+
+                                break;
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // DB를 가져오던 중 에러 발생 시
+                        Toast.makeText(ManagerEnterActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
         } else {
