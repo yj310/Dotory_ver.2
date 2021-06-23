@@ -10,16 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation"/>
-        <activity android:name=".manager.enter.EnterSettingActivity"></activity>
+            tools:replace="screenOrientation" />
+        <activity android:name=".manager.enter.EnterSettingActivity" />
         <activity android:name=".manager.goout.DeleteGoOutTimeActivity" />
         <activity android:name=".manager.goout.GoOutSettingActivity" />
-        <activity android:name=".manager.goout.AddGoOutTimePopupActivity" />
-        <activity
-            android:name=".manager.goout.GoOutInfoPopupActivity"
-            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".manager.post.ModifyPostActivity" />
         <activity android:name=".manager.post.CreatePostActivity" />
         <activity android:name=".manager.my.AddManagerAccountActivity" />

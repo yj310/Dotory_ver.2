@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/popup"
+    android:background="@color/colorClear"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="wrap_content">
@@ -66,10 +66,10 @@
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:gravity="left"
-                android:text="외출 장소" />
+                android:text="체온" />
 
             <TextView
-                android:id="@+id/txt_place"
+                android:id="@+id/txt_temp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,82 +91,7 @@
                 android:textSize="20dp"
                 android:textColor="#000"
                 android:gravity="left"
-                android:text="외출 사유" />
-
-            <TextView
-                android:id="@+id/txt_reason"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="외출 시간" />
-
-            <TextView
-                android:id="@+id/txt_go_out_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="예상 입소 시간" />
-
-            <TextView
-                android:id="@+id/txt_expect_time"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="right" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp">
-
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="#000"
-                android:gravity="left"
-                android:text="입소시간" />
+                android:text="입소 시간" />
 
             <TextView
                 android:id="@+id/txt_enter_time"
