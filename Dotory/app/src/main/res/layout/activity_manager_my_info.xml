@@ -31,7 +31,7 @@
             android:textColor="@color/colorBasic"
             android:textSize="17dp"
             android:textStyle="bold"
-            android:text="관리자 정보"/>
+            android:text="관리자 상세정보"/>
     </LinearLayout>
 
 
@@ -50,6 +50,113 @@
             android:elevation="3dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:layout_marginBottom="5dp"
+                android:paddingHorizontal="20dp"
+                android:orientation="vertical"
+                android:background="@color/colorClear">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="이름"/>
+                    <TextView
+                        android:id="@+id/txt_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18dp"
+                        android:textColor="@color/colorTextDefault"
+                        android:text="홍길동"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorTextBlur"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="휴대전화"/>
+                    <TextView
+                        android:id="@+id/txt_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18dp"
+                        android:textColor="@color/colorTextDefault"
+                        android:text="010-0000-0000"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="3dp"
+                android:layout_marginBottom="5dp"
+                android:paddingHorizontal="20dp"
+                android:orientation="vertical"
+                android:background="@color/colorClear">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="아이디"/>
+                    <TextView
+                        android:id="@+id/txt_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="18dp"
+                        android:textColor="@color/colorTextDefault"
+                        android:text="id "/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorTextBlur"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:text="비밀번호"/>
+                    <Button
+                        android:id="@+id/btn_change_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@drawable/hide_show_toggle_button"
+                        android:textSize="15dp"
+                        android:paddingHorizontal="10dp"
+                        android:textColor="@color/colorTextBlurDark"
+                        android:text="비밀번호 변경"/>
+                </LinearLayout>
+            </LinearLayout>
 
 
         </LinearLayout>
