@@ -297,6 +297,10 @@ public class ManagerEnterActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>();
 
+        ArrayList<EnterInfo> arrayList_cant_enter = new ArrayList<>();
+        ArrayList<EnterInfo> arrayList_enter_ing = new ArrayList<>();
+        ArrayList<EnterInfo> arrayList_enter_after = new ArrayList<>();
+        ArrayList<EnterInfo> arrayList_enter_before = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("Enter/" + today + "/student");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -306,9 +310,20 @@ public class ManagerEnterActivity extends AppCompatActivity {
                 arrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
-                    arrayList.add(enterInfo);
+                    if(enterInfo.getState().equals("입소전")) {
+                        arrayList_enter_before.add(enterInfo);
+                    } else if(enterInfo.getState().equals("입소중") || enterInfo.getState().equals("입소중(지각)")) {
+                        arrayList_enter_ing.add(enterInfo);
+                    } else if(enterInfo.getState().equals("입소완료") || enterInfo.getState().equals("입소완료(지각)")) {
+                        arrayList_enter_after.add(enterInfo);
+                    } else if(enterInfo.getState().equals("입소불가")) {
+                        arrayList_cant_enter.add(enterInfo);
+                    }
                 }
-                //Collections.reverse(arrayList);
+                arrayList.addAll(arrayList_cant_enter);
+                arrayList.addAll(arrayList_enter_ing);
+                arrayList.addAll(arrayList_enter_after);
+                arrayList.addAll(arrayList_enter_before);
                 adapter.notifyDataSetChanged();
             }
 
@@ -353,7 +368,6 @@ public class ManagerEnterActivity extends AppCompatActivity {
                             EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
                             if(enterInfo.getEmail().equals(email)) {
                                 if(temp >= 37.5) {
-                                    Toast.makeText(ManagerEnterActivity.this, temp+"", Toast.LENGTH_SHORT).show();
                                     // 발열
                                     enterInfo.setState("입소불가");
                                     databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소불가");
@@ -461,4 +475,4 @@ public class ManagerEnterActivity extends AppCompatActivity {
 
     }
 
-}
+} 

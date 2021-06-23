@@ -36,7 +36,7 @@ public class DeleteEnterTimeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delete_go_out_time);
+        setContentView(R.layout.activity_delete_enter_time);
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
 

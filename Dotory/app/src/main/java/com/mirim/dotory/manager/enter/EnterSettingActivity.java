@@ -49,7 +49,7 @@ public class EnterSettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_go_out_setting);
+        setContentView(R.layout.activity_enter_setting);
 
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
