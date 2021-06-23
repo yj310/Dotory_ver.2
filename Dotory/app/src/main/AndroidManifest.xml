@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_dotory_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".manager.my.ManagerMyInfoActivity"></activity>
+        <activity android:name=".manager.my.OpenStudentInfoActivity"></activity>
+        <activity android:name=".manager.my.ModifyStudentInfoActivity" />
+        <activity android:name=".manager.my.ManagerMyInfoActivity" />
         <activity android:name=".student.my.StudentMyInfoActivity" />
         <activity android:name=".manager.enter.DeleteEnterTimeActivity" />
         <activity

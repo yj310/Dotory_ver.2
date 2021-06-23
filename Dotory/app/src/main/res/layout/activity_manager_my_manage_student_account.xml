@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:paddingTop="1px"
         android:paddingBottom="1px"
-        android:background="@color/colorFloor">
+        android:background="@color/colorClear">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,6 +51,10 @@
             android:orientation="vertical">
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
