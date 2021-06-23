@@ -68,14 +68,17 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="이름"/>
-                    <TextView
-                        android:id="@+id/txt_name"
+                    <EditText
+                        android:id="@+id/input_name"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="홍길동"/>
+                        android:background="@drawable/input_border2"/>
+
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -92,14 +95,16 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="호실"/>
-                    <TextView
-                        android:id="@+id/txt_room"
+                    <EditText
+                        android:id="@+id/input_room"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="405호"/>
+                        android:background="@drawable/input_border2"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -121,14 +126,22 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="이메일"/>
-                    <TextView
-                        android:id="@+id/txt_email"
+                    <EditText
+                        android:id="@+id/input_email"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="s2019s00@e-mirim.hs.kr"/>
+                        android:background="@drawable/input_border2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="\@e-mirim.hs.kr"/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -145,14 +158,16 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="휴대전화"/>
-                    <TextView
-                        android:id="@+id/txt_phone"
+                    <EditText
+                        android:id="@+id/input_phone"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="010-0000-0000"/>
+                        android:background="@drawable/input_border2"/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -169,14 +184,16 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="보호자 연락처"/>
-                    <TextView
-                        android:id="@+id/txt_guardian"
+                    <EditText
+                        android:id="@+id/input_guardian"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="8dp"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="010-0000-0000"/>
+                        android:background="@drawable/input_border2"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -198,14 +215,35 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="학번"/>
-                    <TextView
-                        android:id="@+id/txt_school_info"
+                    <Spinner
+                        android:id="@+id/spinner_grade"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18dp"
-                        android:textColor="@color/colorTextDefault"
-                        android:text="3학년 1반 1번"/>
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_grade"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
+                    <Spinner
+                        android:id="@+id/spinner_class"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_class"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
+                    <Spinner
+                        android:id="@+id/spinner_class_number"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_class_number"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -222,14 +260,35 @@
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:text="생년월일"/>
-                    <TextView
-                        android:id="@+id/txt_dirth"
+                    <Spinner
+                        android:id="@+id/spinner_birth_year"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18dp"
-                        android:textColor="@color/colorTextDefault"
-                        android:text="2003년 01월 01일"/>
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_birth_year"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
+                    <Spinner
+                        android:id="@+id/spinner_birth_month"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_birth_month"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
+                    <Spinner
+                        android:id="@+id/spinner_birth_day"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:entries="@array/array_birth_day_31"
+                        android:textColor="#222222"
+                        android:background="@drawable/input_border2"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -248,19 +307,49 @@
                     android:textSize="15dp"
                     android:text="주소"/>
 
-                <TextView
-                    android:id="@+id/txt_address"
+                <EditText
+                    android:id="@+id/input_address_load"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="30dp"
-                    android:textSize="18dp"
-                    android:textColor="@color/colorTextDefault"
-                    android:text="서울특별시 무슨구 무슨로 80\n101동 101호"/>
+                    android:layout_height="40dp"
+                    android:background="@drawable/input_border2"
+                    android:hint="도로명주소 입력"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/input_address_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/input_border2"
+                    android:hint="상세주소 입력"
+                    android:inputType="text"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:textSize="15dp" />
             </LinearLayout>
 
 
         </LinearLayout>
     </ScrollView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="bottom"
+        android:background="@color/colorBasic">
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:text="확인" />
+    </LinearLayout>
 
 </LinearLayout>

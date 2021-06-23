@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.R;
 import com.mirim.dotory.student.StudentUser;
-import com.mirim.dotory.student.my.StudentMyInfoActivity;
 
 public class OpenStudentInfoActivity extends AppCompatActivity {
 
@@ -33,7 +32,7 @@ public class OpenStudentInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_student_info);
+        setContentView(R.layout.activity_manager_my_open_student_info);
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
