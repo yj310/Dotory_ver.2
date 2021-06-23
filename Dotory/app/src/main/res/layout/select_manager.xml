@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/whole_area"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@drawable/button3">
+        <ImageView
+            android:id="@+id/image_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/manager"/>
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextDefault"
+            android:text="홍길동 사감"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/btn_more"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="10dp"
+            android:src="@drawable/more"
+            app:tint="@color/colorTextBlur" />
+
+    </LinearLayout>
+</LinearLayout>
+
