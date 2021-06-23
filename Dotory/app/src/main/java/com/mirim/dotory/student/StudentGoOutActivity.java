@@ -178,11 +178,11 @@ public class StudentGoOutActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.btn_titlebar_stayout:
-                    intent = new Intent(StudentGoOutActivity.this, StudentStayOutActivity.class);
+                    /*intent = new Intent(StudentGoOutActivity.this, StudentStayOutActivity.class);
                     intent.putExtra("email", email);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
-                    finish();
+                    finish();*/
                     break;
                 case R.id.btn_time_select:
                     int hour = getIntInText(txt_hour);

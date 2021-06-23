@@ -142,11 +142,11 @@ public class ManagerGoOutActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.btn_titlebar_stayout:
-                    intent = new Intent(ManagerGoOutActivity.this, ManagerStayOutActivity.class);
+                    /*intent = new Intent(ManagerGoOutActivity.this, ManagerStayOutActivity.class);
                     intent.putExtra("id", id);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
-                    finish();
+                    finish();*/
                     break;
                 case R.id.btn_setting:
                     intent = new Intent(ManagerGoOutActivity.this, GoOutSettingActivity.class);

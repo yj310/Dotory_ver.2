@@ -47,7 +47,6 @@ public class ManagerMyActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_manage_student_account).setOnClickListener(onClickListener);
         findViewById(R.id.btn_manage_manager_account).setOnClickListener(onClickListener);
-        findViewById(R.id.btn_alert_setting).setOnClickListener(onClickListener);
 
         findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
         findViewById(R.id.btn_info).setOnClickListener(onClickListener);
@@ -125,11 +124,6 @@ public class ManagerMyActivity extends AppCompatActivity {
                 case R.id.btn_manage_manager_account:
                     intent = new Intent(ManagerMyActivity.this, ManageManagerAccountActivity.class);
                     startActivity(intent);
-                    break;
-                case R.id.btn_alert_setting:
-                    /*intent = new Intent(ManagerMyActivity.this, .class);
-                    startActivity(intent);
-                    finish();*/
                     break;
                 case R.id.btn_info:
                     intent = new Intent(ManagerMyActivity.this, ManagerMyInfoActivity.class);
