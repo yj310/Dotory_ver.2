@@ -95,15 +95,15 @@ public class StudentInfoCustomAdapter extends RecyclerView.Adapter<StudentInfoCu
                         public boolean onMenuItemClick(MenuItem item) {
                             if(item.getTitle().equals("열람")){
                                 // 열람
-                                /*Intent intent = new Intent(context, OpenStudentInfoActivity.class);
+                                Intent intent = new Intent(context, OpenStudentInfoActivity.class);
                                 intent.putExtra("email", studentUser.getEmail());
-                                context.startActivity(intent);*/
+                                context.startActivity(intent);
                             }
                             if(item.getTitle().equals("수정")){
                                 // 수정
-                                /*Intent intent = new Intent(context, ModifyStudentInfotActivity.class);
+                                Intent intent = new Intent(context, ModifyStudentInfoActivity.class);
                                 intent.putExtra("email", studentUser.getEmail());
-                                context.startActivity(intent);*/
+                                context.startActivity(intent);
                             }
                             return false;
                         }

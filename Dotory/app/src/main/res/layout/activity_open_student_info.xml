@@ -75,7 +75,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="홍길동"/>
+                        android:text=""/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -99,7 +99,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="405호"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -128,7 +128,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="s2019s00@e-mirim.hs.kr"/>
+                        android:text=""/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -152,7 +152,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="010-0000-0000"/>
+                        android:text=""/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -176,7 +176,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="010-0000-0000"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -205,7 +205,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="3학년 1반 1번"/>
+                        android:text=""/>
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
@@ -229,7 +229,7 @@
                         android:layout_weight="1"
                         android:textSize="18dp"
                         android:textColor="@color/colorTextDefault"
-                        android:text="2003년 01월 01일"/>
+                        android:text=""/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -255,7 +255,7 @@
                     android:layout_marginBottom="30dp"
                     android:textSize="18dp"
                     android:textColor="@color/colorTextDefault"
-                    android:text="서울특별시 무슨구 무슨로 80\n101동 101호"/>
+                    android:text=""/>
             </LinearLayout>
 
 
