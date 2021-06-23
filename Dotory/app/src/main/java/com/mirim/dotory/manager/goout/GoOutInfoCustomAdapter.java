@@ -119,7 +119,7 @@ public class GoOutInfoCustomAdapter extends RecyclerView.Adapter<GoOutInfoCustom
                     TextView txt_reason = dialog.findViewById(R.id.txt_reason);
                     TextView txt_go_out_time = dialog.findViewById(R.id.txt_go_out_time);
                     TextView txt_expect_time = dialog.findViewById(R.id.txt_expect_time);
-                    TextView txt_enter_time = dialog.findViewById(R.id.txt_enter_time);`
+                    TextView txt_enter_time = dialog.findViewById(R.id.txt_enter_time);
                     Button btn_submit = dialog.findViewById(R.id.btn_submit);
 
                     txt_student_info.setText(goOutInfo.getRoom() + "호 " + goOutInfo.getName());
