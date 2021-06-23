@@ -475,4 +475,4 @@ public class ManagerEnterActivity extends AppCompatActivity {
 
     }
 
-} 
+}

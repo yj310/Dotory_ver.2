@@ -1,5 +1,6 @@
 package com.mirim.dotory.student;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +8,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.R;
+import com.mirim.dotory.manager.ManagerMyActivity;
+import com.mirim.dotory.manager.ManagerUser;
 import com.mirim.dotory.student.my.BookmarkActivity;
 import com.mirim.dotory.student.my.ListActivity;
 import com.mirim.dotory.student.my.RuleActivity;
@@ -16,6 +26,7 @@ import com.mirim.dotory.student.my.RuleActivity;
 public class StudentMyActivity extends AppCompatActivity {
 
     private String email;
+    private TextView txt_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +35,8 @@ public class StudentMyActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
+
+        txt_name = findViewById(R.id.txt_name);
 
         findViewById(R.id.btn_bottombar_board).setOnClickListener(onClickListener);
         findViewById(R.id.btn_bottombar_goout).setOnClickListener(onClickListener);
@@ -35,7 +48,9 @@ public class StudentMyActivity extends AppCompatActivity {
         findViewById(R.id.btn_my_list).setOnClickListener(onClickListener);
         findViewById(R.id.btn_my_rule).setOnClickListener(onClickListener);
         findViewById(R.id.btn_logout).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_info).setOnClickListener(onClickListener);
 
+        loadData();
 
     }
 
@@ -116,10 +131,39 @@ public class StudentMyActivity extends AppCompatActivity {
                     alert.show();
 
                     break;
+                case R.id.btn_info:
+                    intent = new Intent(StudentMyActivity.this, StudentInfoActivity.class);
+                    startActivity(intent);
+                    break;
 
             }
         }
     };
+
+
+    private void loadData() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("StudentUser");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어베이스의 데이터를 받아오는 곳
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    StudentUser studentUser = snapshot.getValue(StudentUser.class);
+                    if(studentUser.getEmail().equals(email)) {
+                        txt_name.setText(studentUser.getRoom() + " " + studentUser.getName());
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // DB를 가져오던 중 에러 발생 시
+                Toast.makeText(StudentMyActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
