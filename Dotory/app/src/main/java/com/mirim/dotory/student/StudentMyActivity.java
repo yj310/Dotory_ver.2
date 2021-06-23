@@ -22,6 +22,7 @@ import com.mirim.dotory.manager.ManagerUser;
 import com.mirim.dotory.student.my.BookmarkActivity;
 import com.mirim.dotory.student.my.ListActivity;
 import com.mirim.dotory.student.my.RuleActivity;
+import com.mirim.dotory.student.my.StudentMyInfoActivity;
 
 public class StudentMyActivity extends AppCompatActivity {
 
@@ -132,7 +133,8 @@ public class StudentMyActivity extends AppCompatActivity {
 
                     break;
                 case R.id.btn_info:
-                    intent = new Intent(StudentMyActivity.this, StudentInfoActivity.class);
+                    intent = new Intent(StudentMyActivity.this, StudentMyInfoActivity.class);
+                    intent.putExtra("email", email);
                     startActivity(intent);
                     break;
 

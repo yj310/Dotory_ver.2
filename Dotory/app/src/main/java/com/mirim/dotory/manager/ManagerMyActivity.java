@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mirim.dotory.EnterInfo;
+import com.mirim.dotory.manager.my.ManagerMyInfoActivity;
 import com.mirim.dotory.student.StudentLoginActivity;
 import com.mirim.dotory.R;
 import com.mirim.dotory.manager.my.ManageManagerAccountActivity;
@@ -131,7 +132,8 @@ public class ManagerMyActivity extends AppCompatActivity {
                     finish();*/
                     break;
                 case R.id.btn_info:
-                    intent = new Intent(ManagerMyActivity.this, ManagerInfoActivity.class);
+                    intent = new Intent(ManagerMyActivity.this, ManagerMyInfoActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                     break;
 
