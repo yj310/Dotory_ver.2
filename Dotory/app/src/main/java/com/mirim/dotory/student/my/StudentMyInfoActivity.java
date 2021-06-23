@@ -84,10 +84,10 @@ public class StudentMyInfoActivity extends AppCompatActivity {
 
                         txt_name.setText(studentUser.getName());
                         txt_room.setText(studentUser.getRoom() + "호");
-                        txt_email.setText(studentUser.getEmail());
+                        txt_email.setText(studentUser.getEmail() + "@e-mirim.hs.kr");
                         txt_phone.setText(studentUser.getPhone());
                         txt_guardian.setText(studentUser.getGuardian_phone());
-                        txt_school_info.setText(studentUser.getGrade() + "학년 " + studentUser.getSchool_class() + "반" + studentUser.getClass_number() + "번");
+                        txt_school_info.setText(studentUser.getGrade() + "학년 " + studentUser.getSchool_class() + "반 " + studentUser.getClass_number() + "번");
                         txt_dirth.setText(studentUser.getBirth_year() + "년 " + studentUser.getBirth_month() + "월 " + studentUser.getBirth_day() + "일");
                         txt_address.setText(studentUser.getAddress_load() + "\n" + studentUser.getAddress_detail());
                         
