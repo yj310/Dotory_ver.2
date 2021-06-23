@@ -37,6 +37,7 @@
         android:background="@color/colorClear">
 
         <TextView
+            android:id="@+id/text_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -45,7 +46,6 @@
             android:textColor="@color/colorTextDefault"
             android:textSize="20dp"
             android:text="체온을 입력하면 QR 코드가 생성됩니다."/>
-        <!--QR코드를 스캔하세요.-->
         <LinearLayout
             android:layout_width="250dp"
             android:layout_height="250dp"

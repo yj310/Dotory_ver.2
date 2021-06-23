@@ -25,6 +25,7 @@ public class StudentEnterActivity extends AppCompatActivity {
     private ImageView iv_qr;
 
     private EditText input_temp;
+    private TextView text_comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class StudentEnterActivity extends AppCompatActivity {
         findViewById(R.id.btn_submit).setOnClickListener(onClickListener);
 
         input_temp = findViewById(R.id.input_temp);
+        text_comment = findViewById(R.id.text_comment);
 
         iv_qr = findViewById(R.id.img_qr);
 
@@ -108,6 +110,7 @@ public class StudentEnterActivity extends AppCompatActivity {
                     } else {
                         double temp = Double.parseDouble(input_temp.getText().toString());
                         createQRcode(temp);
+                        text_comment.setText("QR코드를 스캔하세요.");
                     }
 
                     break;
