@@ -1,12 +1,18 @@
 package com.mirim.dotory.manager.my;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +31,6 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
 
     private EditText input_name;
     private EditText input_room;
-    private EditText input_email;
     private EditText input_phone;
     private EditText input_guardian;
     private EditText input_address_load;
@@ -37,6 +42,8 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
     private Spinner spinner_birth_month;
     private Spinner spinner_birth_day;
 
+    private StudentUser studentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +54,6 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
 
         input_name = findViewById(R.id.input_name);
         input_room = findViewById(R.id.input_room);
-        input_email = findViewById(R.id.input_email);
         input_phone = findViewById(R.id.input_phone);
         input_guardian = findViewById(R.id.input_guardian);
         input_address_load = findViewById(R.id.input_address_load);
@@ -60,6 +66,7 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
         spinner_birth_day = findViewById(R.id.spinner_birth_day);
 
         findViewById(R.id.btn_back).setOnClickListener(onClickListener);
+        findViewById(R.id.btn_submit).setOnClickListener(onClickListener);
 
         loadData();
 
@@ -73,11 +80,110 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
                 case R.id.btn_back:
                     finish();
                     break;
+                case R.id.btn_submit:
+                    chackPassword();
+                    break;
 
             }
         }
     };
 
+    private void chackPassword() {
+
+        AlertDialog.Builder alert_ex = new AlertDialog.Builder(ModifyStudentInfoActivity.this);
+        alert_ex.setMessage("수정하시겠습니까?");
+
+        alert_ex.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        alert_ex.setNegativeButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AlertDialog.Builder alert_ex2 = new AlertDialog.Builder(ModifyStudentInfoActivity.this);
+                alert_ex2.setMessage("패스워드를 입력하시오.");
+
+                alert_ex2.setView(R.layout.alert_dialog);
+
+                alert_ex2.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alert_ex2.setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference databaseReference = database.getReference("ManagerUser");
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                // 파이어베이스의 데이터를 받아오는 곳
+                                Dialog dial = (Dialog) dialog;
+                                EditText input = (EditText) dial.findViewById(R.id.addboxdialog);
+                                if(dataSnapshot.child("password").getValue().toString().equals(input.getText().toString()) ) {
+                                    // 데이터 수정
+                                    modifyInfo();
+                                    Toast.makeText(ModifyStudentInfoActivity.this, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                                    reloadPage();
+                                } else {
+                                    Toast.makeText(ModifyStudentInfoActivity.this, "패스워드가 옳지 않습니다. ", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // DB를 가져오던 중 에러 발생 시
+                                Toast.makeText(ModifyStudentInfoActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                AlertDialog alert2 = alert_ex2.create();
+                alert2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                alert2.show();
+
+            }
+        });
+
+        AlertDialog alert = alert_ex.create();
+        alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        alert.show();
+
+    }
+
+    private void modifyInfo() {
+
+        getData();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("StudentUser/" + email);
+        databaseReference.setValue(studentUser);
+
+
+    }
+
+    private void getData() {
+        studentUser = new StudentUser(
+                input_name.getText().toString(),
+                Integer.parseInt(input_room.getText().toString()),
+                email,
+                input_phone.getText().toString(),
+                input_guardian.getText().toString(),
+                input_address_load.getText().toString(),
+                input_address_detail.getText().toString(),
+                Integer.parseInt(spinner_grade.getSelectedItem().toString()),
+                Integer.parseInt(spinner_class.getSelectedItem().toString()),
+                Integer.parseInt(spinner_class_number.getSelectedItem().toString()),
+                Integer.parseInt(spinner_birth_year.getSelectedItem().toString()),
+                Integer.parseInt(spinner_birth_month.getSelectedItem().toString()),
+                Integer.parseInt(spinner_birth_day.getSelectedItem().toString())
+        );
+    }
 
     private void loadData() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -91,7 +197,6 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
                     if(studentUser.getEmail().equals(email)) {
                         input_name.setText(studentUser.getName());
                         input_room.setText(String.valueOf(studentUser.getRoom()));
-                        input_email.setText(studentUser.getEmail());
                         input_phone.setText(studentUser.getPhone());
                         input_guardian.setText(studentUser.getGuardian_phone());
                         input_address_load.setText(studentUser.getAddress_load());
@@ -157,5 +262,13 @@ public class ModifyStudentInfoActivity extends AppCompatActivity {
                 Toast.makeText(ModifyStudentInfoActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void reloadPage() {
+        Intent intent = getIntent();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 }
