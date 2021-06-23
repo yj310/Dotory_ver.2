@@ -1,4 +1,4 @@
-package com.mirim.dotory.manager.goout;
+package com.mirim.dotory.manager.enter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +16,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mirim.dotory.TimeItem;
 import com.mirim.dotory.R;
+import com.mirim.dotory.TimeItem;
 
 import java.util.ArrayList;
 
-public class DeleteGoOutTimeActivity extends AppCompatActivity {
+public class DeleteEnterTimeActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
 
@@ -52,7 +52,7 @@ public class DeleteGoOutTimeActivity extends AppCompatActivity {
             Intent intent;
             switch(view.getId()){
                 case R.id.btn_back:
-                    Intent popupIntent = new Intent(DeleteGoOutTimeActivity.this, GoOutSettingActivity.class);
+                    Intent popupIntent = new Intent(DeleteEnterTimeActivity.this, EnterSettingActivity.class);
                     startActivity(popupIntent);
                     overridePendingTransition(0, 0);
                     finish();
@@ -69,7 +69,7 @@ public class DeleteGoOutTimeActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("GoOut/timeList");
+        DatabaseReference databaseReference = database.getReference("Enter/timeList");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,10 +94,10 @@ public class DeleteGoOutTimeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // DB를 가져오던 중 에러 발생 시
-                Toast.makeText(DeleteGoOutTimeActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DeleteEnterTimeActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        adapter = new DeleteGoOutTimeCustomAdapter(arrayList, this, this);
+        adapter = new DeleteEnterTimeCustomAdapter(arrayList, this, this);
         recyclerView.setAdapter(adapter);
     }
 

@@ -1,4 +1,4 @@
-package com.mirim.dotory.manager.goout;
+package com.mirim.dotory.manager.enter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -24,15 +24,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustomAdapter.PostCustomViewHolder> {
+public class EnterTimeCustomAdapter extends RecyclerView.Adapter<EnterTimeCustomAdapter.PostCustomViewHolder> {
 
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private ArrayList<TimeItem> arrayList;
     private Context context;
-    private GoOutSettingActivity activity;
+    private EnterSettingActivity activity;
 
-    public GoOutTimeCustomAdapter(ArrayList<TimeItem> arrayList, Context context, GoOutSettingActivity activity) {
+    public EnterTimeCustomAdapter(ArrayList<TimeItem> arrayList, Context context, EnterSettingActivity activity) {
         this.arrayList = arrayList;
         this.context = context;
         this.activity = activity;
@@ -99,9 +99,9 @@ public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustom
                     if(btn_switch.isChecked()) {
                         //Toast.makeText(context, "on", Toast.LENGTH_SHORT).show();
                         database = FirebaseDatabase.getInstance();
-                        databaseReference = database.getReference("GoOut/timeList/use");
+                        databaseReference = database.getReference("Enter/timeList/use");
                         databaseReference.setValue(timeItem.getKey());
-                        databaseReference = database.getReference("GoOut");
+                        databaseReference = database.getReference("Enter");
                         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -112,7 +112,7 @@ public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustom
                                 String today = formatter.format(now);
                                 String use = String.valueOf(timeItem.getKey());
 
-                                databaseReference = database.getReference("GoOut");
+                                databaseReference = database.getReference("Enter");
 
                                 String start_time = dataSnapshot.child("timeList").child(use).child("start").getValue().toString();
                                 String end_time = dataSnapshot.child("timeList").child(use).child("end").getValue().toString();
@@ -137,7 +137,7 @@ public class GoOutTimeCustomAdapter extends RecyclerView.Adapter<GoOutTimeCustom
                     } else {
                         //Toast.makeText(context, "off", Toast.LENGTH_SHORT).show();
                         database = FirebaseDatabase.getInstance();
-                        databaseReference = database.getReference("GoOut/timeList/use");
+                        databaseReference = database.getReference("Enter/timeList/use");
                         databaseReference.setValue(0);
 
                         // 페이지 리로드..

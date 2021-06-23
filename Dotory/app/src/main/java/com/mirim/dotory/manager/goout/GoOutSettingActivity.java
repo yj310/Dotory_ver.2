@@ -6,15 +6,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -25,13 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mirim.dotory.GoOutInfo;
-import com.mirim.dotory.GoOutTime;
-import com.mirim.dotory.Post;
+import com.mirim.dotory.TimeItem;
 import com.mirim.dotory.R;
-import com.mirim.dotory.manager.ManagerGoOutActivity;
-import com.mirim.dotory.manager.post.ModifyPostActivity;
-import com.mirim.dotory.student.StudentGoOutActivity;
 
 import java.util.ArrayList;
 
@@ -42,7 +34,7 @@ public class GoOutSettingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<GoOutTime> arrayList;
+    private ArrayList<TimeItem> arrayList;
 
     private TextView txt_start_time;
     private TextView txt_end_time;
@@ -188,7 +180,7 @@ public class GoOutSettingActivity extends AppCompatActivity {
 
     private void createMorePopup(View view) {
         PopupMenu popup = new PopupMenu(GoOutSettingActivity.this, view);
-        popup.getMenuInflater().inflate(R.menu.go_out_time, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.setting_time, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -225,13 +217,13 @@ public class GoOutSettingActivity extends AppCompatActivity {
                 String useKey = dataSnapshot.child("use").getValue().toString();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if(!(snapshot.getKey().toString().equals("use") || snapshot.getKey().toString().equals("lastkey"))) {
-                        GoOutTime goOutTime = new GoOutTime(Integer.parseInt(snapshot.getKey()), false, snapshot.child("start").getValue().toString(), snapshot.child("end").getValue().toString());
+                        TimeItem timeItem = new TimeItem(Integer.parseInt(snapshot.getKey()), false, snapshot.child("start").getValue().toString(), snapshot.child("end").getValue().toString());
                         if(snapshot.getKey().equals(useKey)) {
-                            goOutTime.setUse(true);
-                            txt_start_time.setText(goOutTime.getStart());
-                            txt_end_time.setText(goOutTime.getEnd());
+                            timeItem.setUse(true);
+                            txt_start_time.setText(timeItem.getStart());
+                            txt_end_time.setText(timeItem.getEnd());
                         }
-                        arrayList.add(goOutTime);
+                        arrayList.add(timeItem);
                     }
                 }
                 //Collections.reverse(arrayList);

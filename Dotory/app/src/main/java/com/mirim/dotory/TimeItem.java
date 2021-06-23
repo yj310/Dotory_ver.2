@@ -1,6 +1,6 @@
 package com.mirim.dotory;
 
-public class GoOutTime {
+public class TimeItem {
 
     private int key;
     private boolean use;
@@ -8,10 +8,10 @@ public class GoOutTime {
     private String end;
 
 
-    public GoOutTime() {
+    public TimeItem() {
     }
 
-    public GoOutTime(int key, boolean use, String start, String end) {
+    public TimeItem(int key, boolean use, String start, String end) {
         this.key = key;
         this.use = use;
         this.start = start;

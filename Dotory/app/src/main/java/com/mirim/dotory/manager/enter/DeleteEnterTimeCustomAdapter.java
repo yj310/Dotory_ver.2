@@ -1,4 +1,4 @@
-package com.mirim.dotory.manager.goout;
+package com.mirim.dotory.manager.enter;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,20 +17,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mirim.dotory.TimeItem;
 import com.mirim.dotory.R;
+import com.mirim.dotory.TimeItem;
 
 import java.util.ArrayList;
 
-public class DeleteGoOutTimeCustomAdapter extends RecyclerView.Adapter<DeleteGoOutTimeCustomAdapter.PostCustomViewHolder> {
+public class DeleteEnterTimeCustomAdapter extends RecyclerView.Adapter<DeleteEnterTimeCustomAdapter.PostCustomViewHolder> {
 
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private ArrayList<TimeItem> arrayList;
     private Context context;
-    private DeleteGoOutTimeActivity activity;
+    private DeleteEnterTimeActivity activity;
 
-    public DeleteGoOutTimeCustomAdapter(ArrayList<TimeItem> arrayList, Context context, DeleteGoOutTimeActivity activity) {
+    public DeleteEnterTimeCustomAdapter(ArrayList<TimeItem> arrayList, Context context, DeleteEnterTimeActivity activity) {
         this.arrayList = arrayList;
         this.context = context;
         this.activity = activity;
@@ -108,7 +108,7 @@ public class DeleteGoOutTimeCustomAdapter extends RecyclerView.Adapter<DeleteGoO
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 database = FirebaseDatabase.getInstance();
-                                databaseReference = database.getReference("GoOut/timeList/" + timeItem.getKey());
+                                databaseReference = database.getReference("Enter/timeList/" + timeItem.getKey());
                                 databaseReference.removeValue();
 
                                 activity.reloadPage();

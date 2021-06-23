@@ -72,6 +72,9 @@ public class EnterInfoCustomAdapter extends RecyclerView.Adapter<EnterInfoCustom
             holder.txt_state.setTextColor(warningColor);
             holder.iv_warning.setVisibility(View.VISIBLE);
         }
+        if(enterInfo.getState().equals("입소중(지각)") || enterInfo.getState().equals("입소완료(지각)")) {
+            holder.txt_state.setTextSize(15);
+        }
 
     }
 

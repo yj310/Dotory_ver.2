@@ -165,25 +165,30 @@ public class ManagerEnterActivity extends AppCompatActivity {
                     // 외출 가능 시간 설정 있음
                     txt_start_time.setText(dataSnapshot.child(today).child("time").child("start").getValue().toString());
                     txt_end_time.setText(dataSnapshot.child(today).child("time").child("end").getValue().toString());
+
+                    String start_time = dataSnapshot.child(today).child("time").child("start").getValue().toString();
+                    String end_time = dataSnapshot.child(today).child("time").child("end").getValue().toString();
+
+                    int start_hour = Integer.parseInt(start_time.split(":")[0]);
+                    int start_minute = Integer.parseInt(start_time.split(":")[1]);
+                    int end_hour = Integer.parseInt(end_time.split(":")[0]);
+                    int end_minute = Integer.parseInt(end_time.split(":")[1]);
+                    int now_hour;
+                    int now_minute;
+
+                    Date now = new Date();
+                    SimpleDateFormat formatter;
+                    formatter = new SimpleDateFormat("HH");
+                    now_hour = Integer.parseInt(formatter.format(now));
+                    formatter = new SimpleDateFormat("mm");
+                    now_minute = Integer.parseInt(formatter.format(now));
+
+                    /*Toast.makeText(ManagerEnterActivity.this,
+                            "now(" + now_hour + ":" + now_minute +
+                                    ") start(" + start_hour + ":" + start_minute +
+                                    ") end(" + end_hour + ":" + end_minute + ")", Toast.LENGTH_SHORT).show();*/
+
                     if(dataSnapshot.child(today).child("state").getValue().toString().equals("before")) {
-
-                        String start_time = dataSnapshot.child(today).child("time").child("start").getValue().toString();
-                        String end_time = dataSnapshot.child(today).child("time").child("end").getValue().toString();
-
-                        int start_hour = Integer.parseInt(start_time.split(":")[0]);
-                        int start_minute = Integer.parseInt(start_time.split(":")[1]);
-                        int end_hour = Integer.parseInt(end_time.split(":")[0]);
-                        int end_minute = Integer.parseInt(end_time.split(":")[1]);
-                        int now_hour;
-                        int now_minute;
-
-                        Date now = new Date();
-                        SimpleDateFormat formatter;
-                        formatter = new SimpleDateFormat("HH");
-                        now_hour = Integer.parseInt(formatter.format(now));
-                        formatter = new SimpleDateFormat("mm");
-                        now_minute = Integer.parseInt(formatter.format(now));
-
 
                         // 현재 시간이 입소 시간 범위 내
                         if((start_hour < now_hour || ((start_hour == now_hour) && (start_minute <= now_minute)))
@@ -209,7 +214,10 @@ public class ManagerEnterActivity extends AppCompatActivity {
                                     Toast.makeText(ManagerEnterActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-                        } else if((now_hour > end_hour) || ((now_hour == end_hour) && (now_minute > end_minute))) {
+                        }
+
+                    } else if(dataSnapshot.child(today).child("state").getValue().toString().equals("ing")) {
+                        if((now_hour > end_hour) || ((now_hour == end_hour) && (now_minute > end_minute))) {
                             // 입소 종료
                             DatabaseReference databaseReference_student = database.getReference("Enter/" + today + "/student");
                             databaseReference_student.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -218,8 +226,8 @@ public class ManagerEnterActivity extends AppCompatActivity {
                                     // 파이어베이스의 데이터를 받아오는 곳
                                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                         EnterInfo enterInfo = snapshot.getValue(EnterInfo.class);
-                                        if(enterInfo.getState().equals("입소중")) {
-                                            databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소중(지각)");
+                                        if (enterInfo.getState().equals("입소중")) {
+                                            databaseReference.child(today).child("student").child(enterInfo.getRoom() + enterInfo.getName()).child("state").setValue("입소중(지각)");
                                         }
                                     }
                                     databaseReference.child(today).child("state").setValue("after");
@@ -233,52 +241,7 @@ public class ManagerEnterActivity extends AppCompatActivity {
                                 }
                             });
                         }
-
                     }
-                    // state가 before?
-                    // 현재시간이 입소시간?
-                    // 학생 state->입소중
-                    // state->ing
-
-                    // state가 ing?
-                    // 현재 시간이 입소시간 초과?
-                    // 학생 state==입소중 ?
-                    // 학생 state -> 입소중(지각)
-                    // state->end
-/*
-                    Date now = new Date();
-                    SimpleDateFormat formatter;
-                    formatter = new SimpleDateFormat("HH");
-                    int now_hour = Integer.parseInt(formatter.format(now));
-                    formatter = new SimpleDateFormat("mm");
-                    int now_minute = Integer.parseInt(formatter.format(now));
-
-                    int end_hour = Integer.parseInt(dataSnapshot.child(today).child("time").child("end").getValue().toString().split(":")[0]);
-                    int end_minute = Integer.parseInt(dataSnapshot.child(today).child("time").child("end").getValue().toString().split(":")[1]);
-
-                    if((now_hour > end_hour) || ((now_hour == end_hour) && (now_minute > end_minute))) {
-                        // 외출시간 초과
-                        DatabaseReference databaseReference = database.getReference("GoOut/" + today + "/student");
-                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                // 파이어베이스의 데이터를 받아오는 곳
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    GoOutInfo goOutInfo = snapshot.getValue(GoOutInfo.class);
-                                    if(goOutInfo.getState().equals("외출중")) {
-                                        databaseReference.child(snapshot.getKey()).child("state").setValue("외출중(지각)");
-                                    }
-                                }
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                // DB를 가져오던 중 에러 발생 시
-                                Toast.makeText(ManagerEnterActivity.this, error.toException().toString(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-*/
 
                 } else {
                     // 외출 가능 시간 설정 없음
@@ -291,6 +254,7 @@ public class ManagerEnterActivity extends AppCompatActivity {
                         DatabaseReference databaseReference = database.getReference("Enter");
                         databaseReference.child(today).child("time").child("start").setValue(start_time);
                         databaseReference.child(today).child("time").child("end").setValue(end_time);
+                        databaseReference.child(today).child("state").setValue("before");
 
                         // 학생 데이터 초기화
                         DatabaseReference databaseReference_student = database.getReference("StudentUser");
@@ -398,7 +362,7 @@ public class ManagerEnterActivity extends AppCompatActivity {
                                     // 정상 입소
                                     enterInfo.setState("입소완료");
                                     databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소완료");
-                                } else if(enterInfo.getState().equals("입소완료")) {
+                                } else if(enterInfo.getState().equals("입소중(지각)")) {
                                     // 지각
                                     enterInfo.setState("입소완료(지각)");
                                     databaseReference.child(today).child("student").child(enterInfo.getRoom()+enterInfo.getName()).child("state").setValue("입소완료(지각)");
